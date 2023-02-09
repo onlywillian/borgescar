@@ -1,7 +1,10 @@
 import Head from 'next/head'
+import Image from 'next/image'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+
+import carImage from '../../public/assets/cars/bugatti-centodieci.webp'
 
 export default function Home() {
   return (
@@ -14,7 +17,13 @@ export default function Home() {
       </Head>
       <main className='h-screen'>
         <Header />
-        <div className="h-full bg-gray-200 w-full"></div>
+        <div className="h-full bg-gray-200 w-full">
+          <Image
+            src={carImage}
+            alt="Aston Martin"
+            className='w-full h-full'
+          />
+        </div>
         <Footer />
       </main>
     </>
