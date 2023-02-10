@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-import carImage from '../../public/assets/cars/bugatti-centodieci.webp'
+import carImage from '../../public/assets/cars/aston.jpg'
 
 export default function Home() {
   return (

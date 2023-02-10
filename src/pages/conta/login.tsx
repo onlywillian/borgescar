@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import Button from '@/components/Button'
+
 export default function Login() {
     return (
         <>
@@ -13,14 +15,23 @@ export default function Login() {
                 <div className='w-2/6 h-5/6 bg-white rounded-3xl flex flex-col justify-around'>
                     <div className='w-40 h-40 bg-gray-800 rounded-full mt-2 self-center'></div>
 
-                    <div className='h-1/3 flex flex-col px-10'>
-                        <label htmlFor="email" className='font-bold'>E-MAIL</label>
-                        <input type="text" id='email' className='bg-[#6F87C5] border-none outline-0 p-2 rounded mb-5' />
-                        <label htmlFor="pass" className='font-bold'>SENHA</label>
+                    <div className='flex flex-col px-10'>
+                        <label htmlFor="email" className='font-extrabold ml-4'>E-MAIL</label>
+                        <input type="text" id='email' className='bg-[#6F87C5] border-none outline-0 p-2 rounded mb-5 text-white' />
+                        <label htmlFor="pass" className='font-extrabold ml-4'>SENHA</label>
                         <input type="text" id='pass' className='bg-[#6F87C5] border-none outline-0 p-2 rounded' />
                     </div>
 
-                    <button className='bg-[#6F87C5] text-white font-bold font-3xl w-1/2 p-2 self-center c-pointer '>ENTRAR</button>
+                    <div className='flex justify-evenly'>
+                        <div className='flex'>
+                            <p className='font-extrabold font'>LEMBRE-SE DE MIM </p>
+                            <input type="checkbox" className='ml-2' />
+                        </div>
+                        <p className='font-extrabold'>ESQUECEU SUA SENHA?</p>
+                    </div>
+
+                    <Button>ENTRE NA SUA CONTA AGORA</Button>
+                    <Button>ENTRAR</Button>
                 </div>
             </main>
         </>
