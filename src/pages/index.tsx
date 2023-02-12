@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -5,8 +6,37 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 import carImage from '../../public/assets/cars/aston.jpg'
+import bmw from '../../public/assets/logos/bmw.svg'
+import buggati from '../../public/assets/logos/bugatti.svg'
+import ferrari from '../../public/assets/logos/ferrari.svg'
 
 export default function Home() {
+  const [logos, setLogos] = useState([
+    {
+      src: bmw,
+      alt: 'bmw',
+      style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full'
+    },
+    {
+      src: buggati,
+      alt: 'buggati',
+      style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full'
+    },
+    {
+      src: ferrari,
+      alt: 'ferrari',
+      style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full'
+    },
+  ])
+
+  function handleLogoClick(logoAlt: string) {
+    const newLogos = logos.map(logo => {
+      return logo.alt === logoAlt ? { ...logo, style: logo.style += ' grayscale-0' } : logo
+    })
+
+    setLogos(newLogos)
+  }
+
   return (
     <>
       <Head>
@@ -17,6 +47,16 @@ export default function Home() {
       </Head>
       <main className='h-screen'>
         <Header />
+        <div className='w-full my-10 flex justify-center gap-10'>
+          {logos.map(logo => (
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              className={logo.style}
+              onClick={() => handleLogoClick(logo.alt)}
+            />
+          ))}
+        </div>
         <div className="h-full bg-gray-200 w-full">
           <Image
             src={carImage}
