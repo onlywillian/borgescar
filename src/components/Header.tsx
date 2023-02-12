@@ -1,11 +1,15 @@
 import Link from "next/link"
-import { useRef } from "react"
+import { useState } from "react"
+
+import Menu from "./Menu";
 
 export default function Header() {
-    let menuRef = useRef<HTMLDivElement | null>(null);
+    const [menuFlag, setMenuFlag] = useState(false);
 
     function handleMenuClick() {
-        // menu action
+        setMenuFlag(!menuFlag)
+
+        console.log(menuFlag);
     }
 
     return (
@@ -15,11 +19,13 @@ export default function Header() {
             <div className='flex'>
                 <Link href={'/conta/login'} className='mr-6'>LOGIN ||| CADASTRO</Link>
 
-                <div className='cursor-pointer' onClick={handleMenuClick} ref={menuRef}>
+                <div className='cursor-pointer' onClick={handleMenuClick}>
                     <div className='w-10 bg-black h-1 my-1'></div>
                     <div className='w-10 bg-black h-1 my-1'></div>
                     <div className='w-10 bg-black h-1 my-1'></div>
                 </div>
+
+                {menuFlag && <Menu handleMenuClick={handleMenuClick} />}
             </div>
         </div>
     )
