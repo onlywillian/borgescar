@@ -12,26 +12,29 @@ export default function Login() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className='h-screen w-screen bg-[#6e97ae] flex items-center justify-center'>
-                <div className='w-2/6 h-5/6 bg-white rounded-3xl flex flex-col justify-around'>
+                <div className='w-5/6 h-5/6 bg-white rounded-3xl flex flex-col justify-around lg:w-2/6'>
                     <div className='w-40 h-40 bg-gray-800 rounded-full mt-2 self-center'></div>
 
                     <div className='flex flex-col px-10'>
-                        <label htmlFor="email" className='font-extrabold ml-4'>E-MAIL</label>
-                        <input type="text" id='email' className='bg-[#6F87C5] border-none outline-0 p-2 rounded mb-5 text-white' />
-                        <label htmlFor="pass" className='font-extrabold ml-4'>SENHA</label>
-                        <input type="text" id='pass' className='bg-[#6F87C5] border-none outline-0 p-2 rounded' />
-                    </div>
+                        <label htmlFor="email" className='font-extrabold ml-4 text-xl'>E-MAIL</label>
+                        <input type="text" id='email' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
+                        <label htmlFor="pass" className='font-extrabold ml-4 text-xl'>SENHA</label>
+                        <input type="text" id='pass' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
 
-                    <div className='flex justify-evenly'>
-                        <div className='flex'>
-                            <p className='font-extrabold font'>LEMBRE-SE DE MIM </p>
-                            <input type="checkbox" className='ml-2' />
+                        <div className='flex justify-evenly lg:justify-around'>
+                            <div className='flex'>
+                                <p className='font-extrabold font text-gray-600'>LEMBRE-SE DE MIM </p>
+                                <input type="checkbox" className='ml-1' />
+                            </div>
+                            <p className='font-extrabold text-gray-600'>ESQUECEU SUA SENHA?</p>
                         </div>
-                        <p className='font-extrabold'>ESQUECEU SUA SENHA?</p>
                     </div>
 
-                    <Button>ENTRE NA SUA CONTA AGORA</Button>
-                    <Button>ENTRAR</Button>
+
+                    <div className='flex flex-col gap-4'>
+                        <Button>ENTRE NA SUA CONTA AGORA</Button>
+                        <Button>ENTRAR</Button>
+                    </div>
                 </div>
             </main>
         </>

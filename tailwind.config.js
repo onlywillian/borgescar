@@ -11,6 +11,7 @@ module.exports = {
         'white-theme': '#E0F4FF',
         'menu-light': '#D1EBFA',
         'menu-dark': '#172132',
+        'aqua-light': '#6E97AE'
       }
     },
   },
