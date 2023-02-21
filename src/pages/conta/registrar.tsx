@@ -12,7 +12,7 @@ export default function Registrar() {
                 border-b-[100vh] border-b-orange-500
                 border-r-[10vw] border-r-transparent
             "></div>
-                asdsad
+            
             </div>
         </>
     )

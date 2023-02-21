@@ -1,6 +1,9 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
 
 import Button from '@/components/Button'
+import logo from '../../../public/assets/app-logos/bc-logo-light.svg'
 
 export default function Login() {
     return (
@@ -13,13 +16,13 @@ export default function Login() {
             </Head>
             <main className='h-screen w-screen bg-[#6e97ae] flex items-center justify-center'>
                 <div className='w-5/6 h-5/6 bg-white rounded-3xl flex flex-col justify-around lg:w-2/6'>
-                    <div className='w-40 h-40 bg-gray-800 rounded-full mt-2 self-center'></div>
+                    <Image className='h-40 w-40 mt-2 self-center' src={logo} alt='Borges Car Logo'/>
 
                     <div className='flex flex-col px-10'>
                         <label htmlFor="email" className='font-extrabold ml-4 text-xl'>E-MAIL</label>
                         <input type="text" id='email' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
                         <label htmlFor="pass" className='font-extrabold ml-4 text-xl'>SENHA</label>
-                        <input type="text" id='pass' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
+                        <input type="password" id='pass' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
 
                         <div className='flex justify-evenly lg:justify-around'>
                             <div className='flex'>
@@ -33,7 +36,9 @@ export default function Login() {
 
                     <div className='flex flex-col gap-4'>
                         <Button>ENTRE NA SUA CONTA AGORA</Button>
-                        <Button>ENTRAR</Button>
+                        <Link href='registrar' className='self-center'>
+                            <Button>CADASTRE-SE AQUI</Button>
+                        </Link>
                     </div>
                 </div>
             </main>

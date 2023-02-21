@@ -12,6 +12,15 @@ module.exports = {
         'menu-light': '#D1EBFA',
         'menu-dark': '#172132',
         'aqua-light': '#6E97AE'
+      },
+      keyframes: {
+        menu: {
+          '0%': { width: '0%' },
+          '100%': { width: '16%' }
+        }
+      },
+      animation: {
+        menu: 'menu 150ms linear'
       }
     },
   },
