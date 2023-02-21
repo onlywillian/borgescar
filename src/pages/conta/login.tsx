@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Input from '@/components/Input'
 
 import Button from '@/components/Button'
 import logo from '../../../public/assets/app-logos/bc-logo-light.svg'
@@ -19,10 +20,8 @@ export default function Login() {
                     <Image className='h-40 w-40 mt-2 self-center' src={logo} alt='Borges Car Logo'/>
 
                     <div className='flex flex-col px-10'>
-                        <label htmlFor="email" className='font-extrabold ml-4 text-xl'>E-MAIL</label>
-                        <input type="text" id='email' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
-                        <label htmlFor="pass" className='font-extrabold ml-4 text-xl'>SENHA</label>
-                        <input type="password" id='pass' className='bg-[#6F87C5] border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white' />
+                        <Input type='email' label='E-MAIL' id='email'/>
+                        <Input type='password' label='SENHA' id='pass'/>
 
                         <div className='flex justify-evenly lg:justify-around'>
                             <div className='flex'>
