@@ -1,12 +1,24 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Input from '@/components/Input'
+import { useState } from 'react'
 
+import Input from '@/components/Input'
 import Button from '@/components/Button'
 import logo from '../../../public/assets/app-logos/bc-logo-light.svg'
 
+
 export default function Login() {
+    const [email, setEmail] = useState('')
+    const [pass, setPass] = useState('')
+
+    const handleLoginButtonSubmit = async () => {
+        const sendData = await fetch("http://localhost:8000/users/new", {
+            method: "POST",
+            body: JSON.stringify({ email: email, password: pass }),
+        })
+    }
+
     return (
         <>
             <Head>
@@ -15,13 +27,25 @@ export default function Login() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className='h-screen w-screen bg-[#6e97ae] flex items-center justify-center'>
+            <main className='h-screen w-screen bg-aqua-light flex items-center justify-center'>
                 <div className='w-5/6 h-5/6 bg-white rounded-3xl flex flex-col justify-around lg:w-2/6'>
                     <Image className='h-40 w-40 mt-2 self-center' src={logo} alt='Borges Car Logo'/>
 
                     <div className='flex flex-col px-10'>
-                        <Input type='email' label='E-MAIL' id='email'/>
-                        <Input type='password' label='SENHA' id='pass'/>
+                        <Input 
+                            type='email' 
+                            label='E-MAIL' 
+                            id='email' 
+                            light={false} 
+                            handleInput={setEmail}
+                        />
+                        <Input 
+                            type='password' 
+                            label='SENHA' 
+                            id='pass' 
+                            light={false} 
+                            handleInput={setPass}
+                        />
 
                         <div className='flex justify-evenly lg:justify-around'>
                             <div className='flex'>

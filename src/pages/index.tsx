@@ -7,7 +7,6 @@ import Logos from '@/components/Logos'
 
 import carImage from '../../public/assets/cars/aston.jpg'
 
-
 export default function Home() {
   return (
     <>
