@@ -12,11 +12,17 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
+    const myHeaders = new Headers();
+    myHeaders.append('Access-Control-Allow-Origin', '*')
+
     const handleLoginButtonSubmit = async () => {
         const sendData = await fetch("http://localhost:8000/users/new", {
             method: "POST",
             body: JSON.stringify({ email: email, password: pass }),
+            headers: myHeaders,
         })
+
+        return console.log(sendData)
     }
 
     return (
@@ -58,7 +64,7 @@ export default function Login() {
 
 
                     <div className='flex flex-col gap-4'>
-                        <Button>ENTRE NA SUA CONTA AGORA</Button>
+                        <Button handleLoginButtonSubmit={handleLoginButtonSubmit}>ENTRE NA SUA CONTA AGORA</Button>
                         <Link href='registrar' className='self-center'>
                             <Button>CADASTRE-SE AQUI</Button>
                         </Link>
