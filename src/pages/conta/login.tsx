@@ -12,16 +12,14 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
-    const myHeaders = new Headers();
-    myHeaders.append('Access-Control-Allow-Origin', '*');
-    myHeaders.append('Content-Type', 'Aplication/json')
-
     const handleLoginButtonSubmit = async () => {
         const response = await fetch("http://localhost:8000/users/find", {
             method: "POST",
             body: JSON.stringify({ email: email, password: pass }, null, 2),
-            headers: myHeaders,
-            mode: 'cors'
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
         })
         const data = await response.json();
 
