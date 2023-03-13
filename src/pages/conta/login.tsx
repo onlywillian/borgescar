@@ -1,7 +1,8 @@
+import { useState } from 'react'
+
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
 
 import Input from '@/components/Input'
 import Button from '@/components/Button'
@@ -15,11 +16,11 @@ export default function Login() {
     const handleLoginButtonSubmit = async () => {
         const response = await fetch("http://localhost:8000/users/find", {
             method: "POST",
-            body: JSON.stringify({ email: email, password: pass }, null, 2),
+            body: JSON.stringify({ email: email, password: pass }),
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
-            },
+            }
         })
         const data = await response.json();
 
