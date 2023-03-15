@@ -8,25 +8,23 @@ import Button from "@/components/Button";
 import logo from '../../../public/assets/app-logos/bc-logo-light.svg'
 
 export default function Registrar() {
-    const [name, setName] = useState('')
+    const [nameUser, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     const [cpf, setCpf] = useState('')
 
-    async function handleButtonClick() {
-        const response = await fetch("htttp://localhost:8000/users/new", {
+    const handleButtonClick = async () => {
+        const response = await fetch("http://localhost:8000/users/find", {
             method: "POST",
-            body: JSON.stringify({ 
-                name: name,
-                email: email, 
-                password: pass,
-                cpf: cpf 
-            }),
+            body: JSON.stringify({ email: email, password: pass }),
             headers: {
-                'Content-Type': "application/json"
-            },
-        });
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            }
+        })
         const data = await response.json();
+
+        return console.log(data)
     }
 
     return (
