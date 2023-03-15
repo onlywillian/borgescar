@@ -13,6 +13,22 @@ export default function Registrar() {
     const [pass, setPass] = useState('')
     const [cpf, setCpf] = useState('')
 
+    async function handleButtonClick() {
+        const response = await fetch("htttp://localhost:8000/users/new", {
+            method: "POST",
+            body: JSON.stringify({ 
+                name: name,
+                email: email, 
+                password: pass,
+                cpf: cpf 
+            }),
+            headers: {
+                'Content-Type': "application/json"
+            },
+        });
+        const data = await response.json();
+    }
+
     return (
         <>
             <Head>
@@ -27,7 +43,7 @@ export default function Registrar() {
                 <Input type='password' label='CONFIRME SUA SENHA' id='confirm-pass' light/>
                 <Input type='text' label='CPF' id='cpf' handleInput={setCpf} light/>
 
-                <Button>CRIE SUA CONTA NA BORGE'S CAR</Button>
+                <Button handleButtonClick={handleButtonClick}>CRIE SUA CONTA NA BORGE'S CAR</Button>
             </form>
         </>
     )

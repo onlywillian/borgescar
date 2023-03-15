@@ -13,7 +13,7 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
-    const handleLoginButtonSubmit = async () => {
+    const handleButtonClick = async () => {
         const response = await fetch("http://localhost:8000/users/find", {
             method: "POST",
             body: JSON.stringify({ email: email, password: pass }),
@@ -66,7 +66,7 @@ export default function Login() {
 
 
                     <div className='flex flex-col gap-4'>
-                        <Button handleLoginButtonSubmit={handleLoginButtonSubmit}>ENTRE NA SUA CONTA AGORA</Button>
+                        <Button handleButtonClick={handleButtonClick}>ENTRE NA SUA CONTA AGORA</Button>
                         <Link href='registrar' className='self-center'>
                             <Button>CADASTRE-SE AQUI</Button>
                         </Link>
