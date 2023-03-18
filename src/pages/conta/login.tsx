@@ -16,11 +16,14 @@ export default function Login() {
     const handleButtonClick = async () => {
         const response = await fetch("http://localhost:8000/users/find", {
             method: "POST",
-            body: JSON.stringify({ email: email, password: pass }),
+            body: JSON.stringify({ 
+                email: email, 
+                password: pass 
+            }),
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
-            }
+            },
         })
         const data = await response.json();
 
@@ -44,14 +47,12 @@ export default function Login() {
                             type='email' 
                             label='E-MAIL' 
                             id='email' 
-                            light={false} 
                             handleInput={setEmail}
                         />
                         <Input 
                             type='password' 
                             label='SENHA' 
                             id='pass' 
-                            light={false} 
                             handleInput={setPass}
                         />
 
