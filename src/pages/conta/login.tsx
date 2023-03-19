@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import Input from '@/components/Input'
 import Button from '@/components/Button'
-import logo from '../../../public/assets/app-logos/bc-logo-light.svg'
+import logo from '../../../public/logo-light.svg'
 
 
 export default function Login() {
@@ -39,7 +39,7 @@ export default function Login() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className='h-screen w-screen bg-aqua-light flex items-center justify-center'>
-                <div className='w-5/6 h-5/6 bg-white rounded-3xl flex flex-col justify-around lg:w-2/6'>
+                <div className='w-5/6 h-5/6 bg-aqua-v-light rounded-3xl flex flex-col justify-around lg:w-2/6'>
                     <Image className='h-40 w-40 mt-2 self-center' src={logo} alt='Borges Car Logo'/>
 
                     <div className='flex flex-col px-10'>

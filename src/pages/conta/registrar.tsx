@@ -5,14 +5,16 @@ import Image from "next/image";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
-import logo from '../../../public/assets/app-logos/bc-logo-light.svg'
+import logo from '../../../public/logo-light.svg'
 
 export default function Registrar() {
     const [nameUser, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
-    const handleButtonClick = async () => {
+    const handleButtonClick = async (e: MouseEvent) => {
+        e.preventDefault()
+
         const response = await fetch("http://localhost:8000/users/new", {
             method: "POST",
             body: JSON.stringify({ 
@@ -35,7 +37,7 @@ export default function Registrar() {
             <Head>
                 <title>Borges Car</title>
             </Head>
-            <form className="w-2/5 h-screen bg-[#DFF4FF] flex flex-col justify-between p-4">
+            <form className="w-2/5 h-screen bg-aqua-v-light flex flex-col justify-between p-4">
                 <Image src={logo} alt='Logo' className="h-28 w-40 self-end"/>
 
                 <Input type='text' label='NOME COMPLETO' id='first-name' handleInput={setName}/>
