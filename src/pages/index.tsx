@@ -28,6 +28,16 @@ export default function Home() {
             className='w-full h-full'
           />
         </div>
+        <div className='w-full my-10 flex justify-center gap-10'>
+          <Logos />
+        </div>
+        <div className="h-full bg-gray-200 w-full">
+          <Image
+            src={carImage}
+            alt="Aston Martin"
+            className='w-full h-full'
+          />
+        </div>
         <Footer />
       </main>
     </>

@@ -20,13 +20,14 @@ export default function Header() {
                 <h1 className='text-2xl self-end'>BORGE'S CAR</h1>
             </div>
 
-            <div className='flex'>
-                <Link href={'/conta/login'} className='mr-6'>LOJA</Link>
+            <div className='flex items-center'>
+                <Link href={'/loja'} className='mr-6'>LOJA</Link>
                 <Link href={'/conta/login'} className='mr-6'>LOGIN ||| CADASTRO</Link>
-
+        
                 <div className='cursor-pointer' onClick={handleMenuClick}>
                     <div className='w-10 bg-black h-1 my-1'></div>
                     <div className='w-10 bg-black h-1 my-1'></div> 
+                    <div className='w-10 bg-black h-1 my-1'></div>
                     <div className='w-10 bg-black h-1 my-1'></div>
                 </div>
 

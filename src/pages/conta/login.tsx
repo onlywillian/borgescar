@@ -8,7 +8,6 @@ import Input from '@/components/Input'
 import Button from '@/components/Button'
 import logo from '../../../public/logo-light.svg'
 
-
 export default function Login() {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
