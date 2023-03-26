@@ -8,23 +8,23 @@ export default function Loja() {
     const data = [
         {
             id: 1,
-            modelo: '',
-            preco: ''
+            modelo: 'lamborghini Aventador',
+            preco: 'R$ 2.000.000.000'
         },
         {
             id: 2,
-            modelo: '',
-            preco: ''
+            modelo: 'Gol bolinha',
+            preco: 'R$ 100.000.000.000'
         },
         {
             id: 3,
-            modelo: '',
-            preco: ''
+            modelo: 'HB20',
+            preco: 'R$ 2.000'
         },
         {
             id: 4,
-            modelo: '',
-            preco: ''
+            modelo: 'Fusca azul',
+            preco: 'R$ 19.000'
         },
     ]
 
@@ -58,8 +58,8 @@ export default function Loja() {
                         <Link href={`/car/${value.id}`} key={value.id} className='w-full h-80 bg-gray-300'>
                             <div className="h-4/5 text-center">Imagem</div>
                             <div className="h-1/5 mx-2">
-                                <p className="font-bold">Modelo: </p>
-                                <p className="font-bold">Preço: </p>
+                                <p className="font-bold">Modelo: {value.modelo}</p>
+                                <p className="font-bold">Preço: {value.preco}</p>
                             </div>
                         </Link> 
                     ))}
