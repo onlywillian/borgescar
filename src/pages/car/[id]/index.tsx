@@ -1,3 +1,7 @@
+import { useRouter } from "next/router"
+
 export default function Car() {
-    return <h1>Willian lindo</h1>
+    const { query } = useRouter()
+
+    return <h1>Esse é o carro {query.id}</h1>
 }
