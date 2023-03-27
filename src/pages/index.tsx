@@ -21,12 +21,13 @@ export default function Home() {
         <div className='w-full my-10 flex justify-center gap-10'>
           <Logos />
         </div>
-        <div className="h-full bg-gray-200 w-full">
-          <Image
-            src={carImage}
-            alt="Aston Martin"
-            className='w-full h-full'
-          />
+        <div className="h-full bg-gray-200 flex overflow-x-visible">
+          <div className='w-[100vw] h-full bg-gray-500'>
+            
+          </div>
+          <div className='w-[100vw] h-full bg-gray-200'>
+            
+          </div>
         </div>
         <div className='w-full my-10 flex justify-center gap-10'>
           <Logos />
