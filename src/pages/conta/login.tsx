@@ -45,7 +45,7 @@ export default function Login() {
                         <Input 
                             type='email' 
                             label='E-MAIL' 
-                            id='email' 
+                            id='email'
                             handleInput={setEmail}
                         />
                         <Input 
@@ -60,7 +60,9 @@ export default function Login() {
                                 <p className='font-extrabold font text-gray-600'>LEMBRE-SE DE MIM </p>
                                 <input type="checkbox" className='ml-1' />
                             </div>
-                            <p className='font-extrabold text-gray-600'>ESQUECEU SUA SENHA?</p>
+                            <Link href={'/conta/recover-password'}>
+                                <p className='font-extrabold text-gray-600'>ESQUECEU SUA SENHA?</p>
+                            </Link>
                         </div>
                     </div>
 
