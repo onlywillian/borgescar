@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import logoImage from '../../../public/logo-light.svg'
 
+import Aside from "@/components/Aside";
+
 export default function Loja() {
     const data = [
         {
@@ -34,8 +36,7 @@ export default function Loja() {
             <title>Loja</title>
         </Head>
         <main className="h-screen bg-aqua-v-light flex">
-            <aside className="w-1/5 bg-aside-bg h-screen sticky flex flex-col p-4 gap-y-2">
-                <Image src={logoImage} alt='logo' className="h-28 mb-8"/>
+            <Aside>
                 <p className="font-bold">CONSÓRCIO</p>
                 <p className="font-bold">FILTROS</p>
                 <div className="ml-4 flex flex-col gap-y-2">
@@ -48,7 +49,7 @@ export default function Loja() {
                     </div>
                     <p>VENDAS ESPECIAIS</p>
                 </div>
-            </aside>
+            </Aside>
             <div className="px-10 w-full">
                 <div className="border-2 border-black w-full h-2/5 mb-10 text-center">
                     Landing

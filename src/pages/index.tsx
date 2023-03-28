@@ -16,16 +16,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='h-screen overflow-x-hidden'>
+      <main className='h-screen'>
         <Header />
         <div className='w-full my-10 flex justify-center gap-10'>
           <Logos />
         </div>
-        <div className="h-full bg-gray-200 flex overflow-x-visible">
-          <div className='w-[100vw] h-full bg-gray-500'>
+        <div className="w-screen h-full bg-gray-200 grid grid-rows-1 grid-cols-3 overflow-x-auto">
+          <div className='w-screen h-full bg-gray-500'>
             
           </div>
-          <div className='w-[100vw] h-full bg-gray-200'>
+          <div className='w-screen h-full bg-gray-200'>
+            
+          </div>
+          <div className='w-screen h-full bg-gray-900'>
             
           </div>
         </div>
