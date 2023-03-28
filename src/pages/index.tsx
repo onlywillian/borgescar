@@ -28,6 +28,9 @@ export default function Home() {
           <div className='w-screen h-full bg-gray-200'>
             
           </div>
+          <div className='w-screen h-full bg-gray-200'>
+            
+          </div>
           <div className='w-screen h-full bg-gray-900'>
             
           </div>
