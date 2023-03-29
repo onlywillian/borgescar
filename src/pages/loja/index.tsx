@@ -35,7 +35,7 @@ export default function Loja() {
         <Head>
             <title>Loja</title>
         </Head>
-        <main className="h-screen bg-aqua-v-light flex">
+        <main className="bg-aqua-v-light flex overflow-hidden">
             <Aside>
                 <p className="font-bold">CONSÓRCIO</p>
                 <p className="font-bold">FILTROS</p>
@@ -50,7 +50,7 @@ export default function Loja() {
                     <p>VENDAS ESPECIAIS</p>
                 </div>
             </Aside>
-            <div className="px-10 w-full">
+            <div className="px-10 w-full overflow-auto">
                 <div className="border-2 border-black w-full h-2/5 mb-10 text-center">
                     Landing
                 </div>  
