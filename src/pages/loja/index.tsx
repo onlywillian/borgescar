@@ -28,6 +28,16 @@ export default function Loja() {
             modelo: 'Fusca azul',
             preco: 'R$ 19.000'
         },
+        {
+            id: 5,
+            modelo: 'Fusca azul',
+            preco: 'R$ 19.000'
+        },
+        {
+            id: 6,
+            modelo: 'Fusca azul',
+            preco: 'R$ 19.000'
+        },
     ]
 
     return (
@@ -35,7 +45,7 @@ export default function Loja() {
         <Head>
             <title>Loja</title>
         </Head>
-        <main className="bg-aqua-v-light flex overflow-hidden">
+        <main className="bg-aqua-v-light flex">
             <Aside>
                 <p className="font-bold">CONSÓRCIO</p>
                 <p className="font-bold">FILTROS</p>
@@ -53,7 +63,7 @@ export default function Loja() {
             <div className="px-10 w-full overflow-auto">
                 <div className="border-2 border-black w-full h-2/5 mb-10 text-center">
                     Landing
-                </div>  
+                </div>
                 <div className="w-full grid grid-cols-2 gap-10">
                     {data.map(value => (
                         <Link href={`/car/${value.id}`} key={value.id} className='w-full h-80 bg-gray-300'>

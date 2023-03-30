@@ -20,13 +20,16 @@ export default function NewCar() {
                     </Link>
                 </Aside>
                 <div className="flex p-20 justify-between w-full">
-                    <div className="flex flex-col bg-gray-200 justify-center w-1/3">
+                    <div className="flex flex-col justify-center w-1/3">
                         <Input 
                             id="nome-veiculo"
                             label="Nome do Veiculo"
                             type="text"
                         />
-                        <label htmlFor=""></label>
+                        <>
+                            <label htmlFor="" className="font-bold ml-4"> Especificações</label>
+                            <textarea id="" className="h-1/5 resize-none border-none bg-purple-input rounded-xl text-white p-2 outline-0"></textarea>        
+                        </>
                         <Input 
                             id="tipo-veiculo"
                             label="Tipo do Veiculo"
@@ -43,8 +46,11 @@ export default function NewCar() {
                             type="date"
                         />
                     </div>
-                    <div className="flex flex-col justify-center bg-gray-200 w-1/3">
-
+                    <div className="flex flex-col justify-center w-1/3">
+                        <>
+                            <label htmlFor="" className="font-bold ml-4"> Imagem do Veículo</label>
+                            <textarea id="" className="h-2/5 resize-none border-none bg-purple-input rounded-xl text-white p-2 outline-0"></textarea>        
+                        </>
                         <Input 
                             id="som"
                             label="Som do Veículo"
