@@ -66,7 +66,7 @@ export default function Loja() {
                 </div>
                 <div className="w-full grid grid-cols-2 gap-10">
                     {data.map(value => (
-                        <Link href={`/car/${value.id}`} key={value.id} className='w-full h-80 bg-gray-300'>
+                        <Link href={`/loja/car/${value.id}`} key={value.id} className='w-full h-80 bg-gray-300'>
                             <div className="h-4/5 text-center">Imagem</div>
                             <div className="h-1/5 mx-2">
                                 <p className="font-bold">Modelo: {value.modelo}</p>

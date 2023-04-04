@@ -16,7 +16,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='h-screen'>
+      <main className='h-screen overflow-auto'>
         <Header />
         <div className='w-full my-10 flex justify-center gap-10'>
           <Logos />
