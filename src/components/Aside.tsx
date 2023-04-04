@@ -8,7 +8,7 @@ export default function Aside({ children }: any) {
             <div className="bg-[#33586C] py-8 flex align-center mb-8 shadow-xl">
                 <Image src={logoImage} alt='logo' className="h-28"/>
             </div>
-            <div className="p-4">
+            <div className="p-4 flex flex-col gap-4">
                 {children}
             </div>
         </aside>

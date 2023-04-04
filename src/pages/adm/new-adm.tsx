@@ -18,6 +18,12 @@ export default function NewAdm() {
                     <Link href={'/adm/new-admin'}>
                         <h2>Cadastrar Administrador</h2>
                     </Link>
+                    <Link href={'/adm/new-admin'}>
+                        <h2>Editar Veículo</h2>
+                    </Link>
+                    <Link href={'/adm/new-admin'}>
+                        <h2>Banco de Dados dos Clientes</h2>
+                    </Link>
                 </Aside>
                 <div className="flex flex-col p-20 items-center w-full">
                         <Input 
