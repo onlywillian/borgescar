@@ -11,20 +11,7 @@ export default function NewCar() {
                 <title>Novo Carro</title>
             </Head>
             <main className="flex">
-                <Aside>
-                    <Link href={'/adm/new-car'}>
-                        <h2 className="font-bold text-mg">Adicionar Veículo</h2>
-                    </Link>
-                    <Link href={'/adm/new-admin'}>
-                        <h2 className="font-bold text-mg">Cadastrar Administrador</h2>
-                    </Link>
-                    <Link href={'/adm/new-admin'}>
-                        <h2 className="font-bold text-mg">Editar Veículo</h2>
-                    </Link>
-                    <Link href={'/adm/new-admin'}>
-                        <h2 className="font-bold text-mg">Banco de Dados dos Clientes</h2>
-                    </Link>
-                </Aside>
+                <Aside />
                 <div className="flex p-20 justify-between w-full">
                     <div className="flex flex-col justify-center w-1/3">
                         <Input 

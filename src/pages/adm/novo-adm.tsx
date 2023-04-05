@@ -11,20 +11,7 @@ export default function NewAdm() {
                 <title>Novo Administrador</title>
             </Head>
             <main className="flex">
-                <Aside>
-                    <Link href={'/adm/new-car'}>
-                        <h2>Adicionar Veículo</h2>
-                    </Link>
-                    <Link href={'/adm/new-admin'}>
-                        <h2>Cadastrar Administrador</h2>
-                    </Link>
-                    <Link href={'/adm/new-admin'}>
-                        <h2>Editar Veículo</h2>
-                    </Link>
-                    <Link href={'/adm/new-admin'}>
-                        <h2>Banco de Dados dos Clientes</h2>
-                    </Link>
-                </Aside>
+                <Aside />
                 <div className="flex flex-col p-20 items-center w-full">
                         <Input 
                             id="tipo-veiculo"
