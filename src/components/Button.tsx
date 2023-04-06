@@ -1,3 +1,5 @@
+'use client'
+
 interface ButtonProps {
     children: string,
     handleButtonClick?: Function
