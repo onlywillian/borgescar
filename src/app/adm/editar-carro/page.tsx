@@ -11,8 +11,8 @@ export default function EditVehicle() {
         <>
             <main className="flex">
                 <Aside />
-                <div className="flex p-20 justify-between w-full">
-                    <div>
+                <div className="flex p-20 justify-between w-full flex-col">
+                    <div className="flex w-full h-full justify-between">
                         <div className="flex flex-col justify-center w-1/3">
                             <Input 
                                 id="nome-veiculo"
@@ -50,10 +50,11 @@ export default function EditVehicle() {
                                 type="file"
                             />
                         </div>
-                        <div>
-                            <Button>Excluir Carro</Button>
-                        </div>
-                    </div>                    
+                    </div>
+                    <div className="flex gap-10">
+                        <Button>Excluir Carro</Button>
+                        <Button>Salvar Alterações</Button>
+                    </div>
                 </div>
             </main>
         </>
