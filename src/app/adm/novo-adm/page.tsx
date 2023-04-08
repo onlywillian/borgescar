@@ -3,6 +3,7 @@ export const metadata = {
 }
 
 import Aside from "@/components/Aside"
+import Button from "@/components/Button"
 import Input from "@/components/Input"
 
 export default function NewAdm() {
@@ -10,12 +11,31 @@ export default function NewAdm() {
         <>
             <main className="flex">
                 <Aside />
-                <div className="flex flex-col p-20 items-center w-full">
+                <div className="flex flex-col items-center justify-center text-center w-full">
                         <Input 
                             id="tipo-veiculo"
-                            label="Tipo do Veiculo"
+                            label="Nome Completo"
                             type="text"
                         />
+                        <Input 
+                            id="tipo-veiculo"
+                            label="Email"
+                            type="text"
+                        />
+                        <Input 
+                            id="tipo-veiculo"
+                            label="Senha"
+                            type="text"
+                        />
+                        <Input 
+                            id="tipo-veiculo"
+                            label="Confirme sua Senha"
+                            type="text"
+                        />
+
+                        <Button>
+                            Cadastrar Administrador
+                        </Button>
                 </div>
             </main>
         </>

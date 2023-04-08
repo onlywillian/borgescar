@@ -14,7 +14,8 @@ module.exports = {
         'menu-dark': '#172132',
         'aqua-light': '#6E97AE',
         'aqua-v-light': '#DFF4FF',
-        'aside-bg': '#B8D8EA'
+        'aside-bg': '#B8D8EA',
+        'adm-blue': '#92AAE8'
       },
       keyframes: {
         menu: {

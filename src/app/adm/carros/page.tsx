@@ -27,9 +27,9 @@ export default function Cars() {
                         />
                     </div>
                 </div>
-                <div className="flex flex-col items-center justify-center h-4/5  gap-2">
+                <div className="flex flex-col items-center justify-center h-4/5">
                     {data.map((iten) => (
-                        <div key={iten.id} className="w-full p-4 even:bg-slate-500 flex">
+                        <div key={iten.id} className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex">
                             <span className="w-4/5">{iten.name}</span>
                             <span className="w-1/5 border-l-2 border-black text-center">{iten.id}</span>
                             <Link href={'/adm/editar-carro'} className="w-1/5 border-l-2 border-black text-center">
