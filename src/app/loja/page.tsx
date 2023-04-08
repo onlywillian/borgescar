@@ -57,7 +57,7 @@ export default function Loja() {
                     <p>VENDAS ESPECIAIS</p>
                 </div>
             </Aside>
-            <div className="px-10 w-full overflow-auto">
+            <div className="h-screen px-10 w-full py-10 overflow-auto">
                 <div className="border-2 border-black w-full h-2/5 mb-10 text-center">
                     Landing
                 </div>
