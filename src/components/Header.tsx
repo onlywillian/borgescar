@@ -16,7 +16,10 @@ export default function Header() {
     }
 
     return (
-        <div className="p-4 flex w-full justify-between">
+        <div className="p-4 flex w-full justify-between relative">
+        
+            <div className='absolute bg-[#B7EEFA] w-full opacity-40 h-28 blur-2xl top-0 left-0 -z-10'></div>
+
             <div className="flex w-2/6">
                 <Image src={logoImage} alt='Borges Car Logo' className="h-20 w-32"/>
                 <h1 className='text-2xl self-end'>BORGE'S CAR</h1>

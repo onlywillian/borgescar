@@ -18,9 +18,9 @@ export default function Home() {
         <div className='w-full my-10 flex justify-center gap-10'>
           <Logos />
         </div>
-        <div className="w-screen h-full bg-gray-200 grid grid-rows-1 grid-cols-3 overflow-x-auto">
+        <div className="w-screen relative h-full bg-gray-200 flex overflow-x-auto">
           <div className='w-screen h-full bg-gray-500'>
-            
+            asdsad
           </div>
           <div className='w-screen h-full bg-gray-200'>
             
