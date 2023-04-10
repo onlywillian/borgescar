@@ -1,20 +1,11 @@
 import Aside from "@/components/Aside";
+import TableCeil from "./tableCeil";
 
-import Link from "next/link";
-
-export default function Cars() {
-    const data = [
-        {
-            id: 1,
-            name: 'Usuário exemplo 1',
-            email: 'exemplo1@gmail.com'
-        },
-        {
-            id: 2,
-            name: 'Usuário exemplo 2',
-            email: 'exemplo2@gmail.com'
-        }
-    ]
+export default async function Cars() {
+    const usersResponse = await fetch("http://localhost:8000/users/all", {
+        cache: 'no-store'
+    });
+    const usersData = await usersResponse.json();
 
     return (
         <main className="flex">
@@ -30,14 +21,8 @@ export default function Cars() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center h-4/5">
-                    {data.map((iten) => (
-                        <div key={iten.id} className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex">
-                            <span className="w-2/5">{iten.name}</span>
-                            <span className="w-3/5 border-l-2 border-black px-2">{iten.email}</span>
-                            <Link href={'/adm/editar-carro'} className="w-1/5 border-l-2 border-black text-center">
-                                Configs
-                            </Link>
-                        </div>
+                    {usersData.map((user: any) => (
+                        <TableCeil id={user.id} name={user.name} email={user.email}/>
                     ))}
                 </div>
             </div>
