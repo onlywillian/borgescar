@@ -23,11 +23,11 @@ export default function RecoverPassword() {
                 <title>Borges Car - Conta</title>
             </Head>
             <main className='h-screen w-screen bg-aqua-light flex items-center justify-center'>
-                <div className='w-5/6 h-3/6 bg-aqua-v-light rounded-3xl flex flex-col justify-around lg:w-2/6'>
+                <div className='w-3/12 h-3/6 bg-aqua-v-light rounded-3xl flex flex-col justify-evenly'>
                     <Image className='h-40 w-40 mt-2 self-center' src={logo} alt='Borges Car Logo'/>
 
                     <div className='flex flex-col px-10'>
-                        <div className="w-1/2 self-center mb-2 text-center">
+                        <div className="w-4/5 self-center mb-6 text-center">
                             <p>Preencha os dados abaixo pra solicitar a recuperação da senha</p>
                         </div>
                         <Input 

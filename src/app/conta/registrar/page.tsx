@@ -46,7 +46,6 @@ export default function Registrar() {
                 <Input type='email' label='EMAIL' id='email' handleInput={setEmail}/>
                 <Input type='password' label='SENHA' id='pass' handleInput={setPass}/>
                 <Input type='password' label='CONFIRME SUA SENHA' id='confirm-pass'/>
-                <Input type='text' label='CPF' id='cpf'/>
 
                 <Button handleButtonClick={handleButtonClick}>CRIE SUA CONTA NA BORGE'S CAR</Button>
             </form>
