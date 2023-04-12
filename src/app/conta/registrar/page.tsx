@@ -1,11 +1,10 @@
 'use client'
 
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
 import Head from "next/head";
 import Image from "next/image";
 import Input from "@/components/Input";
-import Button from "@/components/Button";
 
 import logo from '@/../public/logo-light.svg'
 
@@ -39,16 +38,27 @@ export default function Registrar() {
             <Head>
                 <title>Borges Car</title>
             </Head>
-            <form className="w-2/5 h-screen bg-aqua-v-light flex flex-col justify-between p-4">
-                <Image src={logo} alt='Logo' className="h-28 w-40 self-end"/>
+            <main className="overflow-hidden h-screen w-screen">
 
-                <Input type='text' label='NOME COMPLETO' id='first-name' handleInput={setName}/>
-                <Input type='email' label='EMAIL' id='email' handleInput={setEmail}/>
-                <Input type='password' label='SENHA' id='pass' handleInput={setPass}/>
-                <Input type='password' label='CONFIRME SUA SENHA' id='confirm-pass'/>
+                <form className="w-2/5 h-screen flex flex-col justify-between p-4 overflow-hidden">
+                    <div className="absolute rotate-12 w-1/2 h-[300vh] bg-aqua-v-light -top-[15%] -translate-y-[50%] -z-10"></div>
+                    <Image src={logo} alt='Logo' className="h-28 w-40 self-end"/>
 
-                <Button handleButtonClick={handleButtonClick}>CRIE SUA CONTA NA BORGE'S CAR</Button>
-            </form>
+                    <div className="flex flex-col items-center justify-center gap-2">
+                        <Input type='text' label='NOME COMPLETO' id='first-name' handleInput={setName}/>
+                        <Input type='email' label='EMAIL' id='email' handleInput={setEmail}/>
+                        <Input type='password' label='SENHA' id='pass' handleInput={setPass}/>
+                        <Input type='password' label='CONFIRME SUA SENHA' id='confirm-pass'/>
+                    </div>
+
+                    <button 
+                        className="bg-[#6F87C5] text-white font-bold font-3xl py-4 px-10 self-start c-pointer rounded overflow-hidden"
+                        onClick={(e: MouseEvent) => handleButtonClick?.(e)}
+                    >
+                        CRIE SUA CONTA NA BORGE'S CAR
+                    </button>
+                </form>
+            </main>
         </>
     )
 }
