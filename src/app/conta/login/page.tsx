@@ -14,7 +14,9 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
 
-    const handleButtonClick = async () => {
+    const handleLoginButtonClick = async () => {
+        if (!email || !pass) return alert('Preencha todos os dados!');
+
         const response = await fetch("http://localhost:8000/users/find", {
             method: "POST",
             body: JSON.stringify({ 
@@ -28,7 +30,11 @@ export default function Login() {
         })
         const data = await response.json();
 
-        return console.log(data)
+        if (!data) return alert('Algum erro ocorreu');
+
+        if (data.Error) return alert('Erro: ' + JSON.stringify(data.Error));
+
+        return console.log(data);
     }
 
     return (
@@ -67,7 +73,7 @@ export default function Login() {
 
 
                     <div className='flex flex-col gap-4'>
-                        <Button handleButtonClick={handleButtonClick}>ENTRE NA SUA CONTA AGORA</Button>
+                        <Button handleButtonClick={handleLoginButtonClick}>ENTRE NA SUA CONTA AGORA</Button>
                         <Link href='/conta/registrar' className='self-center'>
                             <Button>CADASTRE-SE AQUI</Button>
                         </Link>
