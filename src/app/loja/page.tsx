@@ -3,42 +3,17 @@ export const metadata = {
 }
 
 import Link from "next/link";
+import Image from "next/image";
 
 import Aside from "@/components/Aside";
 
-export default function Loja() {
-    const data = [
-        {
-            id: 1,
-            modelo: 'lamborghini Aventador',
-            preco: 'R$ 2.000.000.000'
-        },
-        {
-            id: 2,
-            modelo: 'Gol bolinha',
-            preco: 'R$ 100.000.000.000'
-        },
-        {
-            id: 3,
-            modelo: 'HB20',
-            preco: 'R$ 2.000'
-        },
-        {
-            id: 4,
-            modelo: 'Fusca azul',
-            preco: 'R$ 19.000'
-        },
-        {
-            id: 5,
-            modelo: 'Fusca azul',
-            preco: 'R$ 19.000'
-        },
-        {
-            id: 6,
-            modelo: 'Fusca azul',
-            preco: 'R$ 19.000'
-        },
-    ]
+export default async function Loja() {
+    const carsResponse = await fetch("http://localhost:8000/cars/all", {
+        cache: 'no-store'
+    });
+    const carsData = await carsResponse.json()
+
+    console.log(carsData.Cars)
 
     return (
         <>
@@ -61,13 +36,13 @@ export default function Loja() {
                 <div className="border-2 border-black w-full h-2/5 mb-10 text-center">
                     Landing
                 </div>
-                <div className="w-full grid grid-cols-2 gap-10">
-                    {data.map(value => (
-                        <Link href={`/loja/car/${value.id}`} key={value.id} className='w-full h-80 bg-gray-300'>
-                            <div className="h-4/5 text-center">Imagem</div>
-                            <div className="h-1/5 mx-2">
-                                <p className="font-bold">Modelo: {value.modelo}</p>
-                                <p className="font-bold">Preço: {value.preco}</p>
+                <div className="w-full grid grid-cols-2 justify-items-center gap-y-10">
+                    {carsData.Cars.map((value: any) => (
+                        <Link href={`/loja/car/${value.id}`} key={value.id} className='w-2/3 h-96 self-center bg-aside-bg border border-zinc-900'>
+                            <Image src={value.image_link} alt={'Imagem do carro'} width={1000} height={0} className='h-4/5 w-full'/>
+                            <div className="h-1/5 m-2">
+                                <p className="font-bold">Modelo: {value.name}</p>
+                                <p className="font-bold">Preço: R${value.price}</p>
                             </div>
                         </Link> 
                     ))}

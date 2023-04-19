@@ -12,7 +12,7 @@ import Button from "@/components/Button";
 import logo from "@/../public/logo-light.svg"
 
 export default function Car() {
-    const searchParams = useSearchParams()
+    const searchParams = useSearchParams();
 
     return (
         <>
