@@ -2,17 +2,11 @@ import Aside from "@/components/Aside";
 
 import Link from "next/link";
 
-export default function Cars() {
-    const data = [
-        {
-            id: 1,
-            name: 'Carro exemplo 1'
-        },
-        {
-            id: 2,
-            name: 'Carro exemplo 2'
-        }
-    ]
+export default async function Cars() {
+    const carsResponse = await fetch("http://localhost:8000/cars/all", {
+        cache: 'no-store'
+    });
+    const carsData = await carsResponse.json()
 
     return (
         <main className="flex">
@@ -28,7 +22,7 @@ export default function Cars() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center h-4/5">
-                    {data.map((iten) => (
+                    {carsData.Cars.map((iten: any) => (
                         <div key={iten.id} className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex">
                             <span className="w-4/5">{iten.name}</span>
                             <span className="w-1/5 border-l-2 border-black text-center">{iten.id}</span>
