@@ -1,3 +1,7 @@
+export const metadata = {
+    title: 'Carros'
+}
+
 import Aside from "@/components/Aside";
 
 import Link from "next/link";

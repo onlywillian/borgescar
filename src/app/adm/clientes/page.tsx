@@ -1,3 +1,7 @@
+export const metadata = {
+    title: 'Clientes'
+}
+
 import Aside from "@/components/Aside";
 import TableCeil from "./tableCeil";
 
