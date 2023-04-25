@@ -32,17 +32,23 @@ export default async function Loja() {
             <p>VENDAS ESPECIAIS</p>
           </div>
         </Aside>
-        <div className="h-screen px-10 w-full py-10 overflow-auto">
-          <div className="border-2 border-black w-full h-2/5 mb-10 text-center">
-            Landing
+        <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
+          <div className=" w-10/12 h-3/5 mb-10 text-center self-center shadow-2xl">
+            <Image 
+              src={'https://s1.1zoom.me/b5050/792/BUGATTI_Divo_2019_552153_1920x1080.jpg'}
+              alt='Imagem de promoção'
+              width={1000}
+              height={1000}
+              className='w-full h-full'
+            />
           </div>
           <div className="w-full grid grid-cols-2 justify-items-center gap-y-10">
-            {carsData.cars &&
-              carsData.cars.map((value: any) => (
+            {carsData.Cars &&
+              carsData.Cars.map((value: any) => (
                 <Link
                   href={`/loja/car/${value.id}`}
                   key={value.id}
-                  className="w-2/3 h-96 self-center bg-aside-bg border border-zinc-900"
+                  className="w-2/3 h-96 self-center bg-aside-bg shadow-2xl"
                 >
                   <Image
                     src={value.image_links[0]}
