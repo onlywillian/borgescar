@@ -48,7 +48,7 @@ export default async function Loja() {
                 <Link
                   href={`/loja/car/${value.id}`}
                   key={value.id}
-                  className="w-2/3 h-96 self-center bg-aside-bg shadow-2xl"
+                  className="w-2/3 h-96 self-center bg-white"
                 >
                   <Image
                     src={value.image_links[0]}

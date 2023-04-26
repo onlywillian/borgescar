@@ -26,7 +26,6 @@ export default function Header() {
             </div>
 
             <div className='flex items-center'>
-                <Link href={'/loja'} className='mr-6'>LOJA</Link>
                 <Link href={'/conta/login'} className='mr-6'>LOGIN ||| CADASTRO</Link>
         
                 <div className='cursor-pointer' onClick={handleMenuClick}>

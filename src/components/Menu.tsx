@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 interface MenuProps {
     handleMenuClick?: Function
 }
@@ -15,11 +17,7 @@ export default function Menu({ handleMenuClick }: MenuProps) {
                     <h2 className="text-3xl text-white">MENU</h2>
                 </div>
                 <div className="p-4 text-xl flex flex-col gap-2">
-                    <p className="cursor-pointer">Carros Novos</p>
-                    <p className="cursor-pointer">Carros Usados</p>
-                    <p className="cursor-pointer">Venda seu Carro</p>
-                    <p className="cursor-pointer">Consórcio</p>
-                    <p className="cursor-pointer">Financiamento</p>
+                    <Link href={'/loja'} className='mr-6'>LOJA</Link>
                 </div>
             </div>
         </div>

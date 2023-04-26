@@ -28,7 +28,7 @@ export default async function Cars() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center h-4/5">
-          {carsData.cars.map((iten: any) => (
+          {carsData.Cars.map((iten: any) => (
             <div
               key={iten.id}
               className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex"
