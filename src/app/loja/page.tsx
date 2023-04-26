@@ -13,8 +13,6 @@ export default async function Loja() {
   });
   const carsData = await carsResponse.json();
 
-  console.log(carsData);
-
   return (
     <>
       <main className="bg-aqua-v-light flex">
@@ -34,12 +32,14 @@ export default async function Loja() {
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
           <div className=" w-10/12 h-3/5 mb-10 text-center self-center shadow-2xl">
-            <Image 
-              src={'https://s1.1zoom.me/b5050/792/BUGATTI_Divo_2019_552153_1920x1080.jpg'}
-              alt='Imagem de promoção'
+            <Image
+              src={
+                "https://s1.1zoom.me/b5050/792/BUGATTI_Divo_2019_552153_1920x1080.jpg"
+              }
+              alt="Imagem de promoção"
               width={1000}
               height={1000}
-              className='w-full h-full'
+              className="w-full h-full"
             />
           </div>
           <div className="w-full grid grid-cols-2 justify-items-center gap-y-10">
