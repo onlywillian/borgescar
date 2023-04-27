@@ -31,14 +31,14 @@ export default async function Loja() {
           </div>
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
-          <div className=" w-10/12 h-3/5 mb-10 text-center self-center shadow-2xl">
+          <div className=" w-10/12 h-2/5 mb-10 text-center self-center shadow-2xl">
             <Image
               src={
-                "https://s1.1zoom.me/b5050/792/BUGATTI_Divo_2019_552153_1920x1080.jpg"
+                "https://bocamafrapremium.com.br/wp-content/uploads/2023/01/Ref1_Boca_Mafra_Premium_-Banner_Site_Janeiro_Mercedes2.jpg"
               }
               alt="Imagem de promoção"
-              width={1000}
-              height={1000}
+              width={10000}
+              height={10000}
               className="w-full h-full"
             />
           </div>

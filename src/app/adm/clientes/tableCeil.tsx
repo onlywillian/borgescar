@@ -1,35 +1,38 @@
-'use client'
+"use client";
 
 interface TableCeilProps {
-    id: string,
-    name: string,
-    email: string,
+    id: string;
+    name: string;
+    email: string;
 }
 
 export default function TableCeil({ id, name, email }: TableCeilProps) {
     async function handleDeleteButtonClick() {
         const data = await fetch("http://localhost:8000/users/remove", {
-            method: 'delete',
+            method: "DELETE",
             body: JSON.stringify({ id, email }),
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            },  
-        })
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+            },
+        });
 
-        return console.log(data)
+        return console.log(data);
     }
 
     return (
-        <div key={id} className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex">
+        <div
+            key={id}
+            className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex"
+        >
             <span className="w-2/5">{name}</span>
             <span className="w-3/5 border-l-2 border-black px-2">{email}</span>
-            <span 
+            <span
                 className="w-1/5 border-l-2 border-black text-center cursor-pointer"
                 onClick={() => handleDeleteButtonClick()}
             >
-                Delete
+                Deletar
             </span>
         </div>
-    )
+    );
 }

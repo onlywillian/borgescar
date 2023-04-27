@@ -1,6 +1,6 @@
 export const metadata = {
-    title: 'Carros'
-}
+  title: "Carros",
+};
 
 import Aside from "@/components/Aside";
 
@@ -18,14 +18,8 @@ export default async function Cars() {
     <main className="flex">
       <Aside />
       <div className="w-full h-screen flex flex-col p-8">
-        <div className="h-1/5 w-full flex items-center justify-end ">
-          <div className="bg-black">
-            <input
-              type="text"
-              placeholder="Pesquisar Veículo"
-              className="p-2 outline-none border-none bg-gray-200"
-            />
-          </div>
+        <div className="h-1/5 w-full flex items-center ">
+          <h1 className="font-bold text-4xl">Carros</h1>
         </div>
         <div className="flex flex-col items-center justify-center h-4/5">
           {carsData.Cars.map((iten: any) => (
@@ -41,7 +35,7 @@ export default async function Cars() {
                 href={"/adm/editar-carro"}
                 className="w-1/5 border-l-2 border-black text-center"
               >
-                Configs
+                Modificar
               </Link>
             </div>
           ))}
