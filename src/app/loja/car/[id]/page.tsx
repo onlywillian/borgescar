@@ -1,6 +1,8 @@
 "use client";
 
-import React from "react";
+import { useState, useEffect } from "react";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 
 import AssistanceForm from "@/components/AssistanceForm";
@@ -17,9 +19,18 @@ interface Props {
 }
 
 export default function Car({ params }: Props) {
-  const [carInformationData, setCarInformationData]: any =
-    React.useState(false);
-  const [indexImage, setIndexImage]: any = React.useState(0);
+  const [carInformationData, setCarInformationData]: any = useState(false);
+  const [indexImage, setIndexImage]: any = useState(0);
+
+  // Checking if user is authenticated
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("nextAuth.token="))
+    ?.split("=")[1];
+
+  if (!token) {
+    redirect("/conta/login");
+  }
 
   async function getData() {
     const carResponse = await fetch(`http://localhost:8000/cars/${params.id}`, {
@@ -35,7 +46,7 @@ export default function Car({ params }: Props) {
     return setCarInformationData(carData.Car);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     getData();
   }, []);
 
