@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
