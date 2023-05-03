@@ -61,6 +61,8 @@ export default function AuthProvider({ children }: any) {
     });
     const { User, token } = await response.json();
 
+    if (!User) return alert("Usuário não encontrado");
+
     // setting auth cookie
     document.cookie = `nextAuth.token=${token}; max-age=${60 * 60 * 2}`; // 2 hours
 
