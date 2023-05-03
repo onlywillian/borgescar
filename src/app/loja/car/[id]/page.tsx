@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
@@ -67,19 +66,19 @@ export default function Car({ params }: Props) {
       <main>
         <Header />
         <div className="h-[70vh] w-screen flex p-8 mb-20">
-          <div className="h-full bg-aside-bg w-3/5 py-10 px-8 relative">
+          <div className="h-full bg-black w-4/6 py-10 px-8 relative">
             <button
               className="h-20 w-20 absolute bg-gray-200 rounded-full top-1/2 left-10 -translate-y-1/2 flex items-center justify-center text-2xl cursor-pointer opacity-70"
               onClick={() => handleButtonCarouselClick(false)}
             >
               <IoCaretBackOutline />
             </button>
-            <div
+            <button
               className="h-20 w-20 absolute bg-gray-200 rounded-full top-1/2 right-10 -translate-y-1/2 flex items-center justify-center text-2xl cursor-pointer opacity-70"
               onClick={() => handleButtonCarouselClick(true)}
             >
               <IoCaretForwardOutline />
-            </div>
+            </button>
 
             {carInformationData && (
               <Image
