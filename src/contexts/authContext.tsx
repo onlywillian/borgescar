@@ -2,7 +2,6 @@
 
 import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import jwt from "jsonwebtoken";
 
 type User = {
   email: string;
