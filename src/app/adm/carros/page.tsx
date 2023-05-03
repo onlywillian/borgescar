@@ -3,6 +3,7 @@ export const metadata = {
 };
 
 import Aside from "@/components/Aside";
+import { IoSettingsSharp } from 'react-icons/io5';
 
 import Link from "next/link";
 
@@ -11,8 +12,6 @@ export default async function Cars() {
     cache: "no-store",
   });
   const carsData = await carsResponse.json();
-
-  console.log(carsData);
 
   return (
     <main className="flex">
@@ -33,9 +32,9 @@ export default async function Cars() {
               </span>
               <Link
                 href={"/adm/editar-carro"}
-                className="w-1/5 border-l-2 border-black text-center"
+                className="w-1/5 border-l-2 border-black flex justify-center items-center"
               >
-                Modificar
+                <IoSettingsSharp className="text-2xl"/>
               </Link>
             </div>
           ))}

@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Logos from "@/components/Logos";
 
-import carImage from "../../public/assets/cars/aston.jpg";
 import { useRef } from "react";
 
 export default function Home() {

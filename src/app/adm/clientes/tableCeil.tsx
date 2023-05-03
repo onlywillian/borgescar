@@ -1,5 +1,7 @@
 "use client";
 
+import { IoTrashSharp } from 'react-icons/io5';
+
 interface TableCeilProps {
     id: string;
     name: string;
@@ -28,10 +30,10 @@ export default function TableCeil({ id, name, email }: TableCeilProps) {
             <span className="w-2/5">{name}</span>
             <span className="w-3/5 border-l-2 border-black px-2">{email}</span>
             <span
-                className="w-1/5 border-l-2 border-black text-center cursor-pointer"
+                className="w-1/5 border-l-2 border-black cursor-pointer flex justify-center items-center"
                 onClick={() => handleDeleteButtonClick()}
             >
-                Deletar
+                <IoTrashSharp className='text-2xl'/>
             </span>
         </div>
     );
