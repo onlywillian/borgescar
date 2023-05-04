@@ -7,8 +7,11 @@ import Footer from "@/components/Footer";
 import Logos from "@/components/Logos";
 
 import carImage from "../../public/assets/cars/aston.jpg";
+import { useState } from "react";
 
 export default function Home() {
+  const [images, setImages] = useState([]);
+
   return (
     <>
       <main className="h-screen overflow-auto">
@@ -49,25 +52,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* <div className="flex w-full justify-center mt-4">
-          <button
-            className="mx-2 w-4 h-4 rounded-full bg-gray-500 transition-colors duration-300"
-            onClick={() => scrollToSlide(0)}
-          />
-          <button
-            className="mx-2 w-4 h-4 rounded-full bg-gray-500 transition-colors duration-300"
-            onClick={() => scrollToSlide(1)}
-          />
-          <button
-            className="mx-2 w-4 h-4 rounded-full bg-gray-500 transition-colors duration-300"
-            onClick={() => scrollToSlide(2)}
-          />
-        </div> */}
         <div className="w-full my-10 flex justify-center gap-10">
           <Logos />
-        </div>
-        <div className="h-full bg-gray-200 w-full">
-          <Image src={carImage} alt="Aston Martin" className="w-full h-full" />
         </div>
         <Footer />
       </main>
