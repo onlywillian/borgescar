@@ -42,7 +42,7 @@ export default async function Loja() {
           </div>
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
-          <div className=" w-10/12 h-2/5 mb-10 text-center self-center shadow-2xl">
+          <div className=" w-10/12 h-2/5 mb-10 text-center self-center shadow-xl cursor-pointer hover:scale-105 transition-all">
             <Image
               src={
                 "https://bocamafrapremium.com.br/wp-content/uploads/2023/01/Ref1_Boca_Mafra_Premium_-Banner_Site_Janeiro_Mercedes2.jpg"
@@ -59,7 +59,7 @@ export default async function Loja() {
                 <Link
                   href={`/loja/car/${value.id}`}
                   key={value.id}
-                  className="w-2/3 h-96 self-center bg-white"
+                  className="w-2/3 h-96 self-center bg-white transition-all hover:shadow-xl hover:scale-105"
                 >
                   <Image
                     src={value.image_links[0]}

@@ -10,7 +10,7 @@ import carImage from "../../public/assets/cars/aston.jpg";
 import { useState } from "react";
 
 export default function Home() {
-  const [index, setindex] = useState([0, 1, 2]);
+  const [index, setIndex] = useState([0, 1, 2]);
   const [images, setImages] = useState([
     {
       link: 'https://s1.1zoom.me/b5050/112/Lamborghini_Gran_Turismo_Roads_Veneno_Back_view_567887_1920x1080.jpg',
@@ -25,7 +25,9 @@ export default function Home() {
 
   function handleImagesClick(way: string) {
     if (way === 'next') {
+      const newIndex = index.shift()
 
+      console.log(newIndex)
     }
   }
 
@@ -36,37 +38,37 @@ export default function Home() {
         <div className="w-full overflow-auto">
           <div className="flex h-screen overflow-hidden relative justify-center">
             <div 
-              className="w-2/3 h-5/6 absolute -left-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end"
+              className="w-2/3 h-5/6 absolute -left-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4"
               onClick={() => handleImagesClick('previous')}
             >
-              <Image
+              {index && <Image
                 src={images[index[0]].link}
                 alt="Carro"
                 width={1920}
                 height={1080}
                 className="w-full h-full"
-              />
+              />}
             </div>
             <div className="w-2/3 h-5/6 self-start">
-              <Image
+              {index && <Image
                 src={images[index[1]].link}
                 alt="Carro"
                 width={1920}
                 height={0}
                 className="w-full h-full"
-              />
+              />}
             </div>
             <div 
-              className="w-2/3 h-5/6 absolute -right-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end" 
+              className="w-2/3 h-5/6 absolute -right-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4" 
               onClick={() => handleImagesClick('next')}
             >
-              <Image
+              {index && <Image
                 src={images[index[2]].link}
                 alt="Carro"
                 width={1920}
                 height={1080}
                 className="w-full h-full"
-              />
+              />}
             </div>
           </div>
         </div>
