@@ -4,12 +4,13 @@ import Image from "next/image";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CarouselImage from "@/components/CarouselImage";
 import Logos from "@/components/Logos";
 
 import { useState } from "react";
 
 export default function Home() {
-  const [index, setIndex] = useState([0, 1, 2]);
+  const [indexImage, setIndexImage] = useState(0);
   const [images, setImages] = useState([
     {
       link: 'https://s1.1zoom.me/b5050/112/Lamborghini_Gran_Turismo_Roads_Veneno_Back_view_567887_1920x1080.jpg',
@@ -22,15 +23,15 @@ export default function Home() {
     },
   ]);
 
-  function handleImagesClick(way: string) {
-    if (way === 'next') {
-      let newIndexsArray = index;
-      let insertingFirstItemToFinal = newIndexsArray.push(index[0]);
-      let removingFirstItem = newIndexsArray.shift();
+  function handleImagesClick(forward: boolean) {
+    if (forward) {
+      if (indexImage >= 2) return setIndexImage(0);
 
-      console.log(index)
+      setIndexImage((state: any) => state + 1);
+    } else {
+      if (indexImage <= 0) return setIndexImage(2);
 
-      setIndex(newIndexsArray)
+      setIndexImage((state: any) => state - 1);
     }
   }
 
@@ -42,20 +43,19 @@ export default function Home() {
           <div className="flex h-screen overflow-hidden relative justify-center">
             <div 
               className="w-2/3 h-5/6 absolute -left-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4"
-              onClick={() => handleImagesClick('previous')}
+              onClick={() => handleImagesClick(false)}
             >
-              <img
-                src={images[index[0]].link}
+              <Image
+                src={images[indexImage <= 0 ? 2 : indexImage - 1].link}
                 alt="Carro"
                 width={1920}
                 height={1080}
-
                 className="w-full h-full"
               />
             </div>
             <div className="w-2/3 h-5/6 self-start">
-              <img
-                src={images[index[1]].link}
+              <Image
+                src={images[indexImage].link}
                 alt="Carro"
                 width={1920}
                 height={0}
@@ -64,14 +64,15 @@ export default function Home() {
             </div>
             <div 
               className="w-2/3 h-5/6 absolute -right-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4" 
-              onClick={() => handleImagesClick('next')}
+              onClick={() => handleImagesClick(true)}
             >
               <img
-                src={images[index[2]].link}
+                src={images[indexImage >= 2 ? 0 : indexImage + 1].link}
                 alt="Carro"
                 width={1920}
                 height={1080}
                 className="w-full h-full"
+
               />
             </div>
           </div>
