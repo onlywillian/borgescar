@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CarouselImage from "@/components/CarouselImage";
 import Logos from "@/components/Logos";
 
 import { useState } from "react";
