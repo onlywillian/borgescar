@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Logos from "@/components/Logos";
 
-import carImage from "../../public/assets/cars/aston.jpg";
 import { useState } from "react";
 
 export default function Home() {
@@ -25,9 +24,13 @@ export default function Home() {
 
   function handleImagesClick(way: string) {
     if (way === 'next') {
-      const newIndex = index.shift()
+      let newIndexsArray = index;
+      let insertingFirstItemToFinal = newIndexsArray.push(index[0]);
+      let removingFirstItem = newIndexsArray.shift();
 
-      console.log(newIndex)
+      console.log(index)
+
+      setIndex(newIndexsArray)
     }
   }
 
@@ -41,34 +44,35 @@ export default function Home() {
               className="w-2/3 h-5/6 absolute -left-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4"
               onClick={() => handleImagesClick('previous')}
             >
-              {index && <Image
+              <img
                 src={images[index[0]].link}
                 alt="Carro"
                 width={1920}
                 height={1080}
+
                 className="w-full h-full"
-              />}
+              />
             </div>
             <div className="w-2/3 h-5/6 self-start">
-              {index && <Image
+              <img
                 src={images[index[1]].link}
                 alt="Carro"
                 width={1920}
                 height={0}
                 className="w-full h-full"
-              />}
+              />
             </div>
             <div 
               className="w-2/3 h-5/6 absolute -right-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4" 
               onClick={() => handleImagesClick('next')}
             >
-              {index && <Image
+              <img
                 src={images[index[2]].link}
                 alt="Carro"
                 width={1920}
                 height={1080}
                 className="w-full h-full"
-              />}
+              />
             </div>
           </div>
         </div>
