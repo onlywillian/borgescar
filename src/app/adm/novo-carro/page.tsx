@@ -1,17 +1,33 @@
-export const metadata = {
-  title: "Novo Carro",
-};
+'use client'
 
 import Input from "@/components/Input";
 import Aside from "@/components/Aside";
 import Button from "@/components/Button";
+import { FormEvent, useState } from "react";
 
 export default function NewCar() {
+  const [carName, setCarName] = useState('');
+  const [carDescription, setCarDescription] = useState('');
+  const [carType, setCarType] = useState('');
+  const [carPrice, setCarPrice] = useState('');
+  const [carStock, setCarStock] = useState('');
+
+  async function handleFormSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    const formElement: HTMLFormElement = e.target; 
+
+    const response = await fetch('http://localhost:8000/adms/new', {
+      method: 'POST',
+      body: new FormData()
+    });
+  }
+
   return (
     <>
       <main className="flex">
         <Aside />
-        <form className="flex p-20 justify-between w-full flex-col">
+        <form className="flex p-20 justify-between w-full flex-col" onSubmit={(e) => handleFormSubmit(e)}>
           <div className="flex w-full h-full justify-between">
             <div className="flex flex-col justify-center w-1/3">
               <Input
@@ -50,10 +66,15 @@ export default function NewCar() {
               />
             </div>
             <div className="flex flex-col justify-center w-1/3">
-              <Input id="img1" label="Primeira Imagem do Carro" type="file" />
-              <Input id="img1" label="Segunda Imagem do Carro" type="file" />
-              <Input id="img1" label="Terceira Imagem do Carro" type="file" />
-              <Input id="som" label="Som do Veículo" type="file" />
+              <label>Imagem 1</label>
+              <input
+                type='file'
+                name="img1"
+                className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+              />
+              {/* <Input id="img1" label="Segunda Imagem do Carro" type="file" />
+              <Input id="img1" label="Terceira Imagem do Carro" type="file" /> */}
+              {/* <Input id="som" label="Som do Veículo" type="file" /> */}
             </div>
           </div>
           <div className="flex gap-10">

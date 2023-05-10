@@ -40,6 +40,8 @@ export default function NewAdm() {
         <Aside />
         <div className="flex w-full justify-center items-center">
           <div className="flex flex-col items-center justify-center text-center w-1/2">
+            <h1 className="text-3xl font-extrabold mb-6">Cadastrar Administrador</h1>
+
             <Input
               id="nome"
               label="Nome Completo"
