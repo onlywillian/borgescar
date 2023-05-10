@@ -25,5 +25,5 @@ export default function RootLayout({
 
 export const metadata = {
   title: "Borges Car",
-  description: "Welcome to Next.js",
+  description: "Welcome to Borge's Cars website",
 };
