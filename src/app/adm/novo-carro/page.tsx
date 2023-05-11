@@ -6,21 +6,28 @@ import Button from "@/components/Button";
 import { FormEvent, useState } from "react";
 
 export default function NewCar() {
-  const [carName, setCarName] = useState("");
-  const [carDescription, setCarDescription] = useState("");
-  const [carType, setCarType] = useState("");
-  const [carPrice, setCarPrice] = useState("");
-  const [carStock, setCarStock] = useState("");
+  // const [carName, setCarName] = useState("");
+  // const [carDescription, setCarDescription] = useState("");
+  // const [carType, setCarType] = useState("");
+  // const [carPrice, setCarPrice] = useState("");
+  // const [carStock, setCarStock] = useState("");
+
+  const [file, setFile] = useState<File | null>(null);
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
 
-    const formElement: HTMLFormElement = e.target;
+    const formData = new FormData();
 
-    const response = await fetch("http://localhost:8000/adms/new", {
+    formData.append("file", file as File);
+
+    const response = await fetch("http://localhost:8000/cars/new", {
       method: "POST",
-      body: new FormData(),
+      body: formData,
     });
+    const data = await response.json();
+
+    console.log(data);
   }
 
   return (
@@ -74,6 +81,7 @@ export default function NewCar() {
                 type="file"
                 name="img1"
                 className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+                onChange={(e) => setFile(e.target.files![0])}
               />
               {/* <Input id="img1" label="Segunda Imagem do Carro" type="file" />
               <Input id="img1" label="Terceira Imagem do Carro" type="file" /> */}

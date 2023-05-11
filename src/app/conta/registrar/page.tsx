@@ -10,26 +10,46 @@ import Input from "@/components/Input";
 import logo from "@/../public/logo-light.svg";
 
 export default function Registrar() {
-  const [nameUser, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [userData, setUserData] = useState({
+    nameUser: "",
+    email: "",
+    pass: "",
+    confirmPassword: "",
+  });
 
-  const { signUp } = useContext(AuthContext);
+  const { signUp } = useContext(AuthContext); // Pegando o método de
 
   useEffect(() => {
+    // Retirando o overflow da página
     document.body.style.overflow = "hidden";
   }, []);
+
+  //
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setUserData((prevUserData) => ({ ...prevUserData, [name]: value }));
+  };
 
   const handleButtonClick = async (e: MouseEvent) => {
     e.preventDefault();
 
-    if (!nameUser || !email || !pass || !confirmPassword)
+    if (
+      !userData.nameUser ||
+      !userData.email ||
+      !userData.pass ||
+      !userData.confirmPassword
+    )
       return alert("Preencha os campos corretamente");
 
-    if (pass != confirmPassword) return alert("Senhas diferentes");
+    if (userData.pass !== userData.confirmPassword)
+      return alert("Senhas diferentes");
 
-    return signUp({ name: nameUser, email: email, password: pass });
+    return signUp({
+      name: userData.nameUser,
+      email: userData.email,
+      password: userData.pass,
+    });
   };
 
   return (
@@ -54,25 +74,25 @@ export default function Registrar() {
               type="text"
               label="NOME COMPLETO"
               id="first-name"
-              handleInput={setName}
+              handleInput={handleInputChange}
             />
             <Input
               type="email"
               label="EMAIL"
               id="email"
-              handleInput={setEmail}
+              handleInput={handleInputChange}
             />
             <Input
               type="password"
               label="SENHA"
               id="pass"
-              handleInput={setPass}
+              handleInput={handleInputChange}
             />
             <Input
               type="password"
               label="CONFIRME SUA SENHA"
               id="confirm-pass"
-              handleInput={setConfirmPassword}
+              handleInput={handleInputChange}
             />
           </div>
 
