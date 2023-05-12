@@ -1,5 +1,7 @@
 "use client";
 
+import { ChangeEvent } from "react";
+
 interface InputProps {
   type: string;
   label: string;
@@ -7,6 +9,7 @@ interface InputProps {
   inline?: boolean;
   placeholder?: string;
   handleInput?: Function;
+  handleChange?: Function;
 }
 
 export default function Input({
@@ -15,6 +18,7 @@ export default function Input({
   id,
   inline,
   handleInput,
+  handleChange,
   placeholder,
 }: InputProps) {
   return (
@@ -31,6 +35,7 @@ export default function Input({
             type={type}
             id={id}
             onInput={(e) => handleInput?.(e.currentTarget.value)}
+            onChange={(e) => handleChange?.(e)}
             className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
             placeholder={placeholder}
           />
@@ -47,6 +52,7 @@ export default function Input({
             type={type}
             id={id}
             onInput={(e) => handleInput?.(e.currentTarget.value)}
+            onChange={(e) => handleChange?.(e)}
             className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
             placeholder={placeholder}
           />

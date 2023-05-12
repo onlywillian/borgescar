@@ -24,11 +24,11 @@ export default function Registrar() {
     document.body.style.overflow = "hidden";
   }, []);
 
-  //
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setUserData((prevUserData) => ({ ...prevUserData, [name]: value }));
+    const { id, value } = e.target;
+    
+    // Inserindo com base no id
+    setUserData((prevUserData) => ({ ...prevUserData, [id]: value }));
   };
 
   const handleButtonClick = async (e: MouseEvent) => {
@@ -73,26 +73,26 @@ export default function Registrar() {
             <Input
               type="text"
               label="NOME COMPLETO"
-              id="first-name"
-              handleInput={handleInputChange}
+              id="nameUser"
+              handleChange={handleInputChange}
             />
             <Input
               type="email"
               label="EMAIL"
               id="email"
-              handleInput={handleInputChange}
+              handleChange={handleInputChange}
             />
             <Input
               type="password"
               label="SENHA"
               id="pass"
-              handleInput={handleInputChange}
+              handleChange={handleInputChange}
             />
             <Input
               type="password"
               label="CONFIRME SUA SENHA"
-              id="confirm-pass"
-              handleInput={handleInputChange}
+              id="confirmPassword"
+              handleChange={handleInputChange}
             />
           </div>
 
