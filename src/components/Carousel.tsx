@@ -44,6 +44,7 @@ export default function Carousel() {
           width={1920}
           height={1080}
           className="w-full h-full"
+          priority
         />
       </div>
       <div className="w-2/3 h-5/6 self-start">
@@ -53,6 +54,7 @@ export default function Carousel() {
           width={1920}
           height={0}
           className="w-full h-full"
+          priority
         />
       </div>
       <div
@@ -65,6 +67,7 @@ export default function Carousel() {
           width={1920}
           height={1080}
           className="w-full h-full"
+          priority
         />
       </div>
     </div>

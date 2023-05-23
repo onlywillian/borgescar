@@ -5,7 +5,9 @@ import Aside from "@/components/Aside";
 import Button from "@/components/Button";
 import { FormEvent, useState } from "react";
 
-type eventType = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+type eventType =
+  | React.ChangeEvent<HTMLInputElement>
+  | React.ChangeEvent<HTMLTextAreaElement>;
 
 export default function NewCar() {
   const [carData, setCarData] = useState({
@@ -16,14 +18,13 @@ export default function NewCar() {
     stock: "",
   });
 
-  
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
   const [file3, setFile3] = useState<File | null>(null);
 
   const handleInputChange = (e: eventType) => {
     const { id, value } = e.target;
-    
+
     // Inserindo com base no id
     setCarData((prevUserData) => ({ ...prevUserData, [id]: value }));
   };
