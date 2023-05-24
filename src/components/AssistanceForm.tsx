@@ -26,7 +26,7 @@ export default function AssistanceForm() {
     });
     const data = await response.json();
 
-    console.log(data);
+    alert("Agendamento Concluído com sucesso!");
   }
 
   return (

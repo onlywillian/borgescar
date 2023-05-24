@@ -20,18 +20,21 @@ export default function NewAdm() {
       return alert("Suas senhas estão diferentes");
 
     const newAdm = await fetch("http://localhost:8000/adms/new", {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         name: name,
         email: email,
-        password: password
+        password: password,
       }),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
+    const data = await newAdm.json();
 
-    console.log(newAdm)
+    if (data.Eror) return alert("Algum erro ocorreu");
+
+    return alert("Administrador criado com sucesso");
   }
 
   return (
@@ -40,7 +43,9 @@ export default function NewAdm() {
         <Aside />
         <div className="flex w-full justify-center items-center">
           <div className="flex flex-col items-center justify-center text-center w-1/2">
-            <h1 className="text-3xl font-extrabold mb-6">Cadastrar Administrador</h1>
+            <h1 className="text-3xl font-extrabold mb-6">
+              Cadastrar Administrador
+            </h1>
 
             <Input
               id="nome"
