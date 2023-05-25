@@ -32,7 +32,7 @@ export default function NewAdm() {
     });
     const data = await newAdm.json();
 
-    if (data.Eror) return alert("Algum erro ocorreu");
+    if (data.Error) return alert("Erro: " + data.Error);
 
     return alert("Administrador criado com sucesso");
   }

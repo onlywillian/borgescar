@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 
-import AssistanceForm from "@/components/AssistanceForm";
+import AssistanceForm from "@/app/loja/car/[id]/AssistanceForm";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 

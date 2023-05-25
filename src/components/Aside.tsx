@@ -30,6 +30,16 @@ export default function Aside({ children }: AsideProps) {
             <Link href={"/adm/carros"}>
               <h2 className="font-bold text-mg">Banco de Dados dos Carros</h2>
             </Link>
+            <Link href={"/adm/carros"}>
+              <h2 className="font-bold text-mg">
+                Banco de Dados dos Administradores
+              </h2>
+            </Link>
+            <Link href={"/adm/carros"}>
+              <h2 className="font-bold text-mg">
+                Banco de Dados dos Agendamentos
+              </h2>
+            </Link>
           </div>
         </aside>
       ) : (

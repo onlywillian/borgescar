@@ -32,6 +32,17 @@ export default function NewCar() {
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
 
+    if (
+      !carData.name ||
+      !carData.description ||
+      !carData.type ||
+      !carData.price ||
+      !carData.stock
+    )
+      return alert("Preencha todos os campos!");
+
+    if (!file1 || !file2 || !file3) return alert("Insira todas as imagens!");
+
     const formData = new FormData();
 
     // inserindo as imagens
@@ -53,7 +64,9 @@ export default function NewCar() {
     });
     const data = await response.json();
 
-    console.log(data);
+    if (data.Error) return alert("Erro: " + data.Error);
+
+    return alert("Carro criado com sucesso!");
   }
 
   return (
@@ -107,6 +120,7 @@ export default function NewCar() {
               />
             </div>
             <div className="flex flex-col justify-center w-1/3">
+              <h1 className="text-3xl font-extrabold mb-8">Imagens do Carro</h1>
               {/* Upload de imagens */}
               <label>Imagem 1</label>
               <input
