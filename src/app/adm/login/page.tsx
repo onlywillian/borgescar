@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { redirect } from "next/navigation";
 
 export default function NewAdm() {
   const [email, setEmail] = useState("");
@@ -12,21 +13,12 @@ export default function NewAdm() {
   async function handleButtonClick() {
     if (!email || !password) return alert("Preencha os campos corretamente");
 
-    // const newAdm = await fetch("http://localhost:8000/adms/login", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: email,
-    //     password: password,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // const data = await newAdm.json();
+    const admResponse = await fetch(`http://localhost:8000/adms/${email}`);
+    const admData = await admResponse.json();
 
-    // if (data.Eror) return alert("Algum erro ocorreu");
+    if (admData.Error) return alert("Algum erro ocorreu");
 
-    return alert("Administrador criado com sucesso");
+    return redirect("/adm/clientes");
   }
 
   return (
