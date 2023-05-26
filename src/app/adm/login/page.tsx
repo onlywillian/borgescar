@@ -13,7 +13,16 @@ export default function NewAdm() {
   async function handleButtonClick() {
     if (!email || !password) return alert("Preencha os campos corretamente");
 
-    const admResponse = await fetch(`http://localhost:8000/adms/${email}`);
+    const admResponse = await fetch(`http://localhost:8000/adm/auth/login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
     const admData = await admResponse.json();
 
     if (admData.Error) return alert("Algum erro ocorreu");

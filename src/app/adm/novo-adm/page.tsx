@@ -19,7 +19,7 @@ export default function NewAdm() {
     if (password != confirmPassword)
       return alert("Suas senhas estão diferentes");
 
-    const newAdm = await fetch("http://localhost:8000/adms/new", {
+    const newAdm = await fetch("http://localhost:8000/adm/auth/register", {
       method: "POST",
       body: JSON.stringify({
         name: name,
