@@ -62,8 +62,21 @@ export default function AuthProvider({ children }: any) {
 
     if (!User) return alert("Usuário não encontrado");
 
+    var data = new Date();
+    var valorEmMilissegundos = data.getTime();
+    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
+
+    data.setTime(valorDuasHorasAtualizado);
+
     // setting auth cookie
-    document.cookie = `nextAuth.token=${token}; max-age=${60 * 60 * 2}`; // 2 hours
+    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+
+    // function deleteCookies() {
+    //   var Cookies = document.cookie.split(';');
+
+    //   for (var i = 0; i < Cookies.length; i++)
+    //   document.cookie = Cookies[i] + "=;expires=" + new Date().toUTCString();
+    // }
 
     setUser(User);
 
