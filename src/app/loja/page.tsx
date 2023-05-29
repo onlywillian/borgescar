@@ -28,7 +28,9 @@ export default async function Loja() {
     <>
       <main className="bg-aqua-v-light flex">
         <Aside>
-          <p className="font-bold">CONSÓRCIO</p>
+          <Link href={"/"} className="font-bold">
+            HOME
+          </Link>
           <p className="font-bold">FILTROS</p>
           <div className="ml-4 flex flex-col gap-y-2">
             <p>PORTAS</p>

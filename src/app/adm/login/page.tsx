@@ -1,33 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import { redirect } from "next/navigation";
+import { AuthContext } from "@/contexts/authContext";
 
 export default function NewAdm() {
+  const { administratorSignIn } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
   async function handleButtonClick() {
-    if (!email || !password) return alert("Preencha os campos corretamente");
-
-    const admResponse = await fetch(`http://localhost:8000/adm/auth/login`, {
-      method: 'POST',
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    const admData = await admResponse.json();
-
-    if (admData.Error) return alert("Algum erro ocorreu");
-
-    return redirect("/adm/clientes");
+    administratorSignIn({ email, password });
   }
 
   return (

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 
 import { AuthContext } from "@/contexts/authContext";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import logoImage from "../../public/logo-light.svg";
 
 import Menu from "./Menu";
@@ -31,6 +32,12 @@ export default function Header() {
         {!isAuthenticated && (
           <Link href={"/conta/login"} className="mr-6">
             LOGIN ||| CADASTRO
+          </Link>
+        )}
+
+        {isAuthenticated && (
+          <Link href={"/user"} className="mr-8">
+            <IoPersonCircleOutline className="text-4xl hover:text-cyan-900 transition-all" />
           </Link>
         )}
 

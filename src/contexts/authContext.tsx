@@ -9,6 +9,11 @@ type User = {
   password: string;
 };
 
+type Adm = {
+  email: string;
+  password: string;
+};
+
 type SignInData = {
   email: string;
   password: string;
@@ -22,7 +27,9 @@ type SignUpData = {
 
 type AuthContextType = {
   user: User | null;
+  adm: Adm | null;
   isAuthenticated: boolean;
+  administratorSignIn: (data: SignInData) => Promise<void>;
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
 };
@@ -33,6 +40,7 @@ export default function AuthProvider({ children }: any) {
   const router = useRouter();
 
   const [user, setUser] = useState<User | null>(null);
+  const [adm, setAdm] = useState<Adm | null>(null);
 
   const isAuthenticated = !!user;
 
@@ -48,6 +56,32 @@ export default function AuthProvider({ children }: any) {
       setUser({ email: decodedToken.email, password: decodedToken.password });
     }
   }, []);
+
+  async function administratorSignIn({ email, password }: SignInData) {
+    // calling back-end login api
+    const response = await fetch("http://localhost:8000/adm/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ email: email, password: password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const { Adm, token } = await response.json();
+
+    if (!Adm) return alert("Usuário não encontrado");
+
+    var data = new Date();
+    var valorEmMilissegundos = data.getTime();
+    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
+
+    data.setTime(valorDuasHorasAtualizado);
+
+    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+
+    setAdm(Adm);
+
+    return router.push("/adm/clientes");
+  }
 
   async function signIn({ email, password }: SignInData) {
     // calling back-end login api
@@ -68,19 +102,10 @@ export default function AuthProvider({ children }: any) {
 
     data.setTime(valorDuasHorasAtualizado);
 
-    // setting auth cookie
     document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
-
-    // function deleteCookies() {
-    //   var Cookies = document.cookie.split(';');
-
-    //   for (var i = 0; i < Cookies.length; i++)
-    //   document.cookie = Cookies[i] + "=;expires=" + new Date().toUTCString();
-    // }
 
     setUser(User);
 
-    // Redirect to store page
     return router.push("/loja");
   }
 
@@ -99,8 +124,13 @@ export default function AuthProvider({ children }: any) {
     });
     const { User, token } = await response.json();
 
-    // setting auth cookie
-    document.cookie = `nextAuth.token=${token}; max-age=${60 * 60 * 2}`; // 2 hours
+    var data = new Date();
+    var valorEmMilissegundos = data.getTime();
+    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
+
+    data.setTime(valorDuasHorasAtualizado);
+
+    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
 
     setUser(User);
 
@@ -109,7 +139,16 @@ export default function AuthProvider({ children }: any) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signUp }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        adm,
+        isAuthenticated,
+        administratorSignIn,
+        signIn,
+        signUp,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
