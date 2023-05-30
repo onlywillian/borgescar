@@ -2,7 +2,6 @@ export const metadata = {
   title: "Clientes",
 };
 
-import Aside from "@/components/Aside";
 import TableCeil from "./tableCeil";
 
 export default async function Cars() {
@@ -12,8 +11,7 @@ export default async function Cars() {
   const usersData = await usersResponse.json();
 
   return (
-    <main className="flex">
-      <Aside />
+    <>
       <div className="w-full h-screen flex flex-col p-8">
         <div className="h-1/5 w-full flex items-center ">
           <h1 className="font-bold text-4xl">Clientes</h1>
@@ -24,6 +22,6 @@ export default async function Cars() {
           ))}
         </div>
       </div>
-    </main>
+    </>
   );
 }

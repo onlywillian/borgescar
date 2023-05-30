@@ -1,7 +1,6 @@
 "use client";
 
 import Input from "@/components/Input";
-import Aside from "@/components/Aside";
 import Button from "@/components/Button";
 import { FormEvent, useState } from "react";
 
@@ -61,7 +60,6 @@ export default function NewCar() {
   return (
     <>
       <main className="flex">
-        <Aside />
         <form
           className="flex p-20 justify-between w-full flex-col"
           onSubmit={(e) => handleFormSubmit(e)}

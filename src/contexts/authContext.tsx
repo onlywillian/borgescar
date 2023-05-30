@@ -76,37 +76,46 @@ export default function AuthProvider({ children }: any) {
 
     data.setTime(valorDuasHorasAtualizado);
 
-    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+    document.cookie = `admAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
 
     setAdm(Adm);
 
     return router.push("/adm/clientes");
   }
 
-  async function signIn({ email, password }: SignInData) {
-    // calling back-end login api
-    const response = await fetch("http://localhost:8000/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const { User, token } = await response.json();
-
-    if (!User) return alert("Usuário não encontrado");
-
-    var data = new Date();
-    var valorEmMilissegundos = data.getTime();
-    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
-
-    data.setTime(valorDuasHorasAtualizado);
-
-    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
-
-    setUser(User);
-
-    return router.push("/loja");
+  async function signIn({ email, password }: User) {
+    try {
+      const response = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error("Falha ao realizar o login");
+      }
+  
+      const { User, token } = await response.json();
+  
+      if (!User) {
+        throw new Error("Usuário não encontrado");
+      }
+  
+      const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+      document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
+  
+      setUser(User);
+  
+      router.push("/loja");
+    } catch (error as Error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Ocorreu um erro desconhecido.");
+      }
+    }
   }
 
   async function signUp({ name, email, password }: SignUpData) {
