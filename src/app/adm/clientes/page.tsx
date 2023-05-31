@@ -2,9 +2,17 @@ export const metadata = {
   title: "Clientes",
 };
 
+import { cookies } from "next/headers";
 import TableCeil from "./tableCeil";
+import { redirect } from "next/navigation";
 
 export default async function Cars() {
+  const token = cookies().get("adm.token");
+
+  if (!token) {
+    redirect("/adm/login");
+  }
+
   const usersResponse = await fetch("http://localhost:8000/users/all", {
     cache: "no-store",
   });

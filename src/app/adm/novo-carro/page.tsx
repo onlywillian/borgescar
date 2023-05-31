@@ -2,13 +2,19 @@
 
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
+import { AuthContext } from "@/contexts/authContext";
+import { redirect } from "next/navigation";
 
 type eventType =
   | React.ChangeEvent<HTMLInputElement>
   | React.ChangeEvent<HTMLTextAreaElement>;
 
 export default function NewCar() {
+  const { isAdmAuthenticated } = useContext(AuthContext);
+
+  if (!isAdmAuthenticated) redirect("/adm/login");
+
   const [carData, setCarData] = useState({
     name: "",
     description: "",

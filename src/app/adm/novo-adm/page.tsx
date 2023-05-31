@@ -1,15 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { AuthContext } from "@/contexts/authContext";
+import { redirect } from "next/navigation";
 
 export default function NewAdm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const { isAdmAuthenticated } = useContext(AuthContext);
+
+  if (!isAdmAuthenticated) redirect("/adm/login");
 
   async function handleButtonClick() {
     if (!name || !email || !password || !confirmPassword)

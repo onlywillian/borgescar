@@ -5,8 +5,16 @@ export const metadata = {
 import { IoSettingsSharp } from "react-icons/io5";
 
 import Link from "next/link";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default async function Cars() {
+  const token = cookies().get("adm.token");
+
+  if (!token) {
+    redirect("/adm/login");
+  }
+
   const carsResponse = await fetch("http://localhost:8000/cars/all", {
     cache: "no-store",
   });
