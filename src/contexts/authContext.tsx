@@ -59,28 +59,32 @@ export default function AuthProvider({ children }: any) {
 
   async function administratorSignIn({ email, password }: SignInData) {
     // calling back-end login api
-    const response = await fetch("http://localhost:8000/adm/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const { Adm, token } = await response.json();
+    try {
+      const response = await fetch("http://localhost:8000/adm/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email: email, password: password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!Adm) return alert("Usuário não encontrado");
+      if (!response.ok) {
+        throw new Error("Falha ao realizar o login");
+      }
 
-    var data = new Date();
-    var valorEmMilissegundos = data.getTime();
-    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
+      const { Adm, token } = await response.json();
 
-    data.setTime(valorDuasHorasAtualizado);
+      if (!Adm) return alert("Usuário não encontrado");
 
-    document.cookie = `admAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+      const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+      document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
 
-    setAdm(Adm);
+      setAdm(Adm);
 
-    return router.push("/adm/clientes");
+      router.push("/adm/clientes");
+    } catch (error: any) {
+      alert(error);
+    }
   }
 
   async function signIn({ email, password }: User) {
@@ -92,29 +96,25 @@ export default function AuthProvider({ children }: any) {
           "Content-Type": "application/json",
         },
       });
-  
+
       if (!response.ok) {
         throw new Error("Falha ao realizar o login");
       }
-  
+
       const { User, token } = await response.json();
-  
+
       if (!User) {
         throw new Error("Usuário não encontrado");
       }
-  
+
       const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
       document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
-  
+
       setUser(User);
-  
+
       router.push("/loja");
-    } catch (error as Error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      } else {
-        alert("Ocorreu um erro desconhecido.");
-      }
+    } catch (error: any) {
+      alert(error);
     }
   }
 
