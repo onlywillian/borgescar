@@ -26,7 +26,7 @@ export default async function Loja() {
 
   return (
     <>
-      <main className="bg-aqua-v-light flex">
+      <main className="bg-[#f5f9ff] flex">
         <Aside>
           <Link href={"/"} className="font-bold">
             HOME

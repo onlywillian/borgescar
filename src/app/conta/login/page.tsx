@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <>
       <main className="h-screen w-screen bg-aqua-light flex items-center justify-center">
-        <div className="w-5/6 h-5/6 bg-aqua-v-light rounded-3xl flex flex-col justify-around lg:w-2/6">
+        <div className="w-1/4 h-4/6 bg-aqua-v-light rounded-3xl flex flex-col justify-around">
           <Image
             className="h-40 w-40 mt-2 self-center"
             src={logo}
@@ -48,13 +48,13 @@ export default function Login() {
 
             <div className="flex justify-evenly lg:justify-around">
               <div className="flex">
-                <p className="font-extrabold font text-gray-600">
+                <p className="font-extrabold text-xs font text-gray-600">
                   LEMBRE-SE DE MIM{" "}
                 </p>
                 <input type="checkbox" className="ml-1" />
               </div>
               <Link href={"/conta/recover-password"}>
-                <p className="font-extrabold text-gray-600">
+                <p className="font-extrabold text-xs text-gray-600">
                   ESQUECEU SUA SENHA?
                 </p>
               </Link>

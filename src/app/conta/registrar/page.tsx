@@ -66,7 +66,7 @@ export default function Registrar() {
           className="w-full h-full absolute -z-20"
         />
         <form className="w-2/5 h-screen flex flex-col justify-between p-4">
-          <div className="absolute rotate-12 w-1/2 h-[300vh] bg-aqua-v-light -top-[15%] -translate-y-[50%] -z-10 opacity-80"></div>
+          <div className="absolute rotate-12 w-1/2 h-[300vh] bg-aqua-v-light -top-[15%] -translate-y-[50%] -z-10 opacity-95"></div>
           <Image src={logo} alt="Logo" className="h-28 w-40 self-end" />
 
           <div className="flex flex-col items-center justify-center gap-2">
