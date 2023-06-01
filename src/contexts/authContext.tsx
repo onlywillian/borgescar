@@ -29,6 +29,7 @@ type AuthContextType = {
   user: User | null;
   adm: Adm | null;
   isAuthenticated: boolean;
+  isAdmAuthenticated: boolean;
   administratorSignIn: (data: SignInData) => Promise<void>;
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
@@ -43,70 +44,130 @@ export default function AuthProvider({ children }: any) {
   const [adm, setAdm] = useState<Adm | null>(null);
 
   const isAuthenticated = !!user;
+  const isAdmAuthenticated = !!adm;
 
   useEffect(() => {
-    const token = document.cookie
+    const userToken = document.cookie
       .split("; ")
       .find((row) => row.startsWith("nextAuth.token="))
       ?.split("=")[1];
 
-    if (token) {
-      const decodedToken: any = decode(token);
+    if (userToken) {
+      const decodedToken: any = decode(userToken);
 
-      setUser({ email: decodedToken.email, password: decodedToken.password });
+      setUser({
+        email: decodedToken.email,
+        password: decodedToken.password,
+      });
+    }
+
+    const admToken = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("adm.token="))
+      ?.split("=")[1];
+
+    if (admToken) {
+      const decodedToken: any = decode(admToken);
+
+      setAdm({
+        email: decodedToken.email,
+        password: decodedToken.password,
+      });
     }
   }, []);
 
   async function administratorSignIn({ email, password }: SignInData) {
     // calling back-end login api
-    const response = await fetch("http://localhost:8000/adm/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const { Adm, token } = await response.json();
+    try {
+      const response = await fetch("http://localhost:8000/adm/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email: email, password: password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!Adm) return alert("Usuário não encontrado");
+      if (!response.ok) {
+        throw new Error("Falha ao realizar o login");
+      }
 
-    var data = new Date();
-    var valorEmMilissegundos = data.getTime();
-    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
+      const { Adm, token } = await response.json();
 
-    data.setTime(valorDuasHorasAtualizado);
+      if (!Adm) return alert("Usuário não encontrado");
 
-    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+      const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+      document.cookie = `adm.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
 
-    setAdm(Adm);
+      setAdm(Adm);
 
-    return router.push("/adm/clientes");
+      router.push("/adm/clientes");
+    } catch (error: any) {
+      alert(error);
+    }
   }
 
-  async function signIn({ email, password }: SignInData) {
-    // calling back-end login api
-    const response = await fetch("http://localhost:8000/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const { User, token } = await response.json();
+  async function administratorSignUp({ name, email, password }: SignUpData) {
+    try {
+      const response = await fetch("http://localhost:8000/adm/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (!User) return alert("Usuário não encontrado");
+      if (!response.ok) {
+        throw new Error("Falha ao realizar o login");
+      }
 
-    var data = new Date();
-    var valorEmMilissegundos = data.getTime();
-    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
+      const { Adm, token } = await response.json();
 
-    data.setTime(valorDuasHorasAtualizado);
+      if (!Adm) return alert("Usuário não encontrado");
 
-    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+      const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+      document.cookie = `adm.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
 
-    setUser(User);
+      setAdm(Adm);
 
-    return router.push("/loja");
+      router.push("/adm/clientes");
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async function signIn({ email, password }: User) {
+    try {
+      const response = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Falha ao realizar o login");
+      }
+
+      const { User, token } = await response.json();
+
+      if (!User) {
+        throw new Error("Usuário não encontrado");
+      }
+
+      const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+      document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
+
+      setUser(User);
+
+      router.push("/loja");
+    } catch (error: any) {
+      alert(error);
+    }
   }
 
   async function signUp({ name, email, password }: SignUpData) {
@@ -124,13 +185,8 @@ export default function AuthProvider({ children }: any) {
     });
     const { User, token } = await response.json();
 
-    var data = new Date();
-    var valorEmMilissegundos = data.getTime();
-    var valorDuasHorasAtualizado = valorEmMilissegundos + 2 * 60 * 60 * 1000;
-
-    data.setTime(valorDuasHorasAtualizado);
-
-    document.cookie = `nextAuth.token=${token}; expires=${data.toUTCString()}`; // 2 hours
+    const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+    document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
 
     setUser(User);
 
@@ -144,6 +200,7 @@ export default function AuthProvider({ children }: any) {
         user,
         adm,
         isAuthenticated,
+        isAdmAuthenticated,
         administratorSignIn,
         signIn,
         signUp,
