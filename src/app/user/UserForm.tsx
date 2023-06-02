@@ -26,7 +26,7 @@ export default function UserForm() {
   async function handleSaveButtonClick(e: MouseEvent) {
     e.preventDefault();
 
-    if (!userName || !userEmail) return alert("Nenhuma modificação feita");
+    if (!userName && !userEmail) return alert("Nenhuma modificação feita");
 
     if (userName === user?.name || userEmail === user?.email)
       return alert("Nenhuma modificação feita");
@@ -62,7 +62,8 @@ export default function UserForm() {
               type="text"
               id="user-name"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
-              value={user?.name}
+              onChange={(e) => setUserName(e.target.value)}
+              value={userName ? userName : user?.name}
             />
           </div>
           <div className="w-full flex flex-col">
@@ -76,7 +77,8 @@ export default function UserForm() {
               type="email"
               id="email"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
-              value={user?.email}
+              onChange={(e) => setUserEmail(e.target.value)}
+              value={userEmail ? userEmail : user?.email}
             />
           </div>
         </div>
