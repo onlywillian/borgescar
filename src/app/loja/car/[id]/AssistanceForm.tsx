@@ -30,7 +30,7 @@ export default function AssistanceForm() {
   }
 
   return (
-    <div className="h-full bg-aside-bg w-3/5 flex flex-col p-8 gap-10 justify-center">
+    <div className="h-full bg-aside-bg w-1/4 self-center flex flex-col p-8 gap-10 justify-center">
       <h1 className="font-bold text-2xl self-center">Agendamento</h1>
       <Input
         id="name"
@@ -40,8 +40,8 @@ export default function AssistanceForm() {
       />
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col">
-          <label htmlFor="date" className="font-extrabold ml-4 text-lg">
-            Dia do atendimento
+          <label htmlFor="date" className="font-extrabold text-sm">
+            Dia do atendimento  
           </label>
           <select
             id="date"
@@ -54,7 +54,7 @@ export default function AssistanceForm() {
           </select>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="time" className="font-extrabold ml-4 text-lg">
+          <label htmlFor="time" className="font-extrabold text-sm">
             Horário do atendimento
           </label>
           <select

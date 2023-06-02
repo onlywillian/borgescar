@@ -65,16 +65,16 @@ export default function Car({ params }: Props) {
     <>
       <main>
         <Header />
-        <div className="h-[70vh] w-screen flex p-8 mb-20">
+        <div className="h-[70vh] w-screen flex justify-center p-8 mb-20">
           <div className="h-full bg-aside-bg w-3/6 py-10 px-20 relative">
             <button
-              className="h-20 w-20 absolute bg-gray-200 rounded-full top-1/2 left-10 -translate-y-1/2 flex items-center justify-center text-2xl cursor-pointer opacity-70 hover:opacity-100 active:scale-110"
+              className="h-5/6 w-10 absolute bg-gray-200 top-1/2 left-14 -translate-y-1/2 flex items-center justify-center text-2xl cursor-pointer opacity-70 hover:opacity-100 active:scale-110"
               onClick={() => handleButtonCarouselClick(false)}
             >
               <IoCaretBackOutline />
             </button>
             <button
-              className="h-20 w-20 absolute bg-gray-200 rounded-full top-1/2 right-10 -translate-y-1/2 flex items-center justify-center text-2xl cursor-pointer opacity-70 hover:opacity-100 active:scale-110"
+              className="h-5/6 w-10 absolute bg-gray-200 top-1/2 right-14 -translate-y-1/2 flex items-center justify-center text-2xl cursor-pointer opacity-70 hover:opacity-100 active:scale-110"
               onClick={() => handleButtonCarouselClick(true)}
             >
               <IoCaretForwardOutline />
