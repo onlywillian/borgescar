@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import decode from "jwt-decode";
 
 type User = {
+  name: string;
   email: string;
-  password: string;
 };
 
 type Adm = {
@@ -56,8 +56,8 @@ export default function AuthProvider({ children }: any) {
       const decodedToken: any = decode(userToken);
 
       setUser({
+        name: decodedToken.name,
         email: decodedToken.email,
-        password: decodedToken.password,
       });
     }
 
@@ -139,7 +139,7 @@ export default function AuthProvider({ children }: any) {
     }
   }
 
-  async function signIn({ email, password }: User) {
+  async function signIn({ email, password }: SignInData) {
     try {
       const response = await fetch("http://localhost:8000/auth/login", {
         method: "POST",
