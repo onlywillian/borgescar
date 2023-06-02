@@ -25,19 +25,19 @@ export default function Aside({ children }: AsideProps) {
               <h2 className="font-bold text-sm">Cadastrar Administrador</h2>
             </Link>
             <Link href={"/adm/clientes"}>
-              <h2 className="font-bold text-sm">Banco de Dados dos Clientes</h2>
+              <h2 className="font-bold text-sm">Clientes</h2>
             </Link>
             <Link href={"/adm/carros"}>
-              <h2 className="font-bold text-sm">Banco de Dados dos Carros</h2>
+              <h2 className="font-bold text-sm">Carros</h2>
             </Link>
             <Link href={"/adm/carros"}>
               <h2 className="font-bold text-sm">
-                Banco de Dados dos Administradores
+                Administradores
               </h2>
             </Link>
             <Link href={"/adm/carros"}>
-              <h2 className="font-bold text-mg">
-                Banco de Dados dos Agendamentos
+              <h2 className="font-bold text-sm">
+                Agendamentos
               </h2>
             </Link>
           </div>

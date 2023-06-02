@@ -3,17 +3,25 @@
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { FormEvent, useContext, useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { AuthContext } from "@/contexts/authContext";
 
 type eventType =
   | React.ChangeEvent<HTMLInputElement>
   | React.ChangeEvent<HTMLTextAreaElement>;
 
-export default function NewCar() {
+interface Props {
+  params: {
+    carId: string;
+  };
+}
+
+export default function NewCar({ params }: Props) {
+  const router = useRouter();
+
   const { isAdmAuthenticated } = useContext(AuthContext);
 
-  if (!isAdmAuthenticated) redirect("/adm/login");
+  if (!isAdmAuthenticated) router.push("/adm/login");
 
   const [carData, setCarData] = useState({
     name: "",
@@ -29,6 +37,23 @@ export default function NewCar() {
     // Inserindo com base no id
     setCarData((prevUserData) => ({ ...prevUserData, [id]: value }));
   };
+
+  async function handleDeleteButtonClick(e: MouseEvent) {
+    e.preventDefault();
+
+    const response = await fetch("http://localhost:8000/cars/remove", {
+      method: "delete",
+      body: JSON.stringify({ id: params.carId }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const data = await response.json();
+
+    console.log(data);
+
+    return router.push("adm/carros");
+  }
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
@@ -113,7 +138,7 @@ export default function NewCar() {
           </div>
         </div>
         <div className="flex gap-10 w-full justify-center">
-          <Button>Deletar Veículo</Button>
+          <Button handleButtonClick={(e: MouseEvent) => handleDeleteButtonClick(e)}>Deletar Veículo</Button>
           <Button>Salvar Alterações</Button>
         </div>
       </form>

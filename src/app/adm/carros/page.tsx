@@ -37,7 +37,7 @@ export default async function Cars() {
                 {iten.id}
               </span>
               <Link
-                href={"/adm/editar-carro"}
+                href={`/adm/editar-carro/${iten.id}`}
                 className="w-1/5 border-l-2 border-black flex justify-center items-center"
               >
                 <IoSettingsSharp className="text-2xl" />

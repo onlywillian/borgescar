@@ -6,12 +6,12 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 
 export default function UserForm() {
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const { user } = useContext(AuthContext);
+
+  const [userName, setUserName] = useState(user!.name);
+  const [userEmail, setUserEmail] = useState(user!.email);
 
   const router = useRouter();
-
-  const { user } = useContext(AuthContext);
 
   function handleButtonLogOutClick() {
     var Cookies = document.cookie.split(";");
@@ -32,7 +32,7 @@ export default function UserForm() {
       return alert("Nenhuma modificação feita");
 
     const response = await fetch("http://localhost:8000/users/update", {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify({
         oldEmail: user?.email,
         newEmail: userEmail,
@@ -42,9 +42,9 @@ export default function UserForm() {
         "Content-Type": "application/json",
       },
     });
-    const data = response.json();
+    const data = await response.json();
 
-    return alert(data);
+    return console.log(data);
   }
 
   return (
@@ -58,13 +58,13 @@ export default function UserForm() {
             >
               Nome de Usuário
             </label>
-            <input
+            {userName && <input
               type="text"
               id="user-name"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+              value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              value={userName ? userName : user?.name}
-            />
+            />}
           </div>
           <div className="w-full flex flex-col">
             <label
@@ -73,13 +73,13 @@ export default function UserForm() {
             >
               Email
             </label>
-            <input
+            {userEmail && <input
               type="email"
               id="email"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+              value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
-              value={userEmail ? userEmail : user?.email}
-            />
+            />}
           </div>
         </div>
       </div>
