@@ -2,7 +2,7 @@
 
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, use, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/contexts/authContext";
 
@@ -17,25 +17,31 @@ interface Props {
 }
 
 export default function NewCar({ params }: Props) {
+  const [oldCarData, setOldCarData] = useState<any>({});
+  const [carData, setCarData] = useState<any>({});
   const router = useRouter();
 
   const { isAdmAuthenticated } = useContext(AuthContext);
 
   if (!isAdmAuthenticated) router.push("/adm/login");
 
-  const [carData, setCarData] = useState({
-    name: "",
-    description: "",
-    type: "",
-    price: "",
-    stock: "",
-  });
+  useEffect(() => {
+    async function getCarData() {
+      const response = await fetch(
+        `http://localhost:8000/cars/${params.carId}`
+      );
+      const data = await response.json();
+
+      setCarData(data.Car);
+    }
+    getCarData();
+  }, []);
 
   const handleInputChange = (e: eventType) => {
     const { id, value } = e.target;
 
     // Inserindo com base no id
-    setCarData((prevUserData) => ({ ...prevUserData, [id]: value }));
+    setCarData((prevUserData: any) => ({ ...prevUserData, [id]: value }));
   };
 
   async function handleDeleteButtonClick(e: MouseEvent) {
@@ -45,8 +51,8 @@ export default function NewCar({ params }: Props) {
       method: "delete",
       body: JSON.stringify({ id: params.carId }),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
 
@@ -67,25 +73,19 @@ export default function NewCar({ params }: Props) {
     )
       return alert("Preencha todos os campos!");
 
-    const formData = new FormData();
-
-    // Inserindo os dados do formulário
-    formData.append("name", carData.name);
-    formData.append("description", carData.description);
-    formData.append("type", carData.type);
-    formData.append("price", carData.price);
-    formData.append("stock", carData.stock);
-
     // Mandando a requisição
-    const response = await fetch("http://localhost:8000/cars/new", {
-      method: "POST",
-      body: formData,
+    const response = await fetch("http://localhost:8000/cars/update", {
+      method: "PUT",
+      body: JSON.stringify(carData),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
 
     if (data.Error) return alert("Erro: " + data.Error);
 
-    return alert("Carro criado com sucesso!");
+    return alert("Update completo criado com sucesso!");
   }
 
   return (
@@ -102,6 +102,7 @@ export default function NewCar({ params }: Props) {
               type="text"
               placeholder="Ex: Aston Martin Vulcan"
               handleChange={handleInputChange}
+              defaultValue={carData.name}
             />
             <>
               <label htmlFor="espec" className="font-bold ml-4">
@@ -112,6 +113,7 @@ export default function NewCar({ params }: Props) {
                 className="h-1/5 resize-none border-none bg-purple-input rounded-xl text-white p-2 outline-0"
                 placeholder="Descrição completa do veículo"
                 onChange={(e) => handleInputChange(e)}
+                defaultValue={carData.description}
               ></textarea>
             </>
             <Input
@@ -120,6 +122,7 @@ export default function NewCar({ params }: Props) {
               type="text"
               placeholder="Ex: Esportivo"
               handleChange={handleInputChange}
+              defaultValue={carData.type}
             />
             <Input
               id="price"
@@ -127,6 +130,7 @@ export default function NewCar({ params }: Props) {
               type="text"
               placeholder="Ex: 1.000.000"
               handleChange={handleInputChange}
+              defaultValue={carData.price}
             />
             <Input
               id="stock"
@@ -134,11 +138,16 @@ export default function NewCar({ params }: Props) {
               type="number"
               placeholder="Ex: 10"
               handleChange={handleInputChange}
+              defaultValue={carData.stock}
             />
           </div>
         </div>
         <div className="flex gap-10 w-full justify-center">
-          <Button handleButtonClick={(e: MouseEvent) => handleDeleteButtonClick(e)}>Deletar Veículo</Button>
+          <Button
+            handleButtonClick={(e: MouseEvent) => handleDeleteButtonClick(e)}
+          >
+            Deletar Veículo
+          </Button>
           <Button>Salvar Alterações</Button>
         </div>
       </form>

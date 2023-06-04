@@ -8,6 +8,7 @@ interface InputProps {
   id: string;
   inline?: boolean;
   placeholder?: string;
+  defaultValue?: string;
   handleInput?: Function;
   handleChange?: Function;
 }
@@ -20,6 +21,7 @@ export default function Input({
   handleInput,
   handleChange,
   placeholder,
+  defaultValue,
 }: InputProps) {
   return (
     <>
@@ -38,6 +40,7 @@ export default function Input({
             onChange={(e) => handleChange?.(e)}
             className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
             placeholder={placeholder}
+            defaultValue={defaultValue}
           />
         </div>
       ) : (
@@ -55,6 +58,7 @@ export default function Input({
             onChange={(e) => handleChange?.(e)}
             className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
             placeholder={placeholder}
+            defaultValue={defaultValue}
           />
         </div>
       )}

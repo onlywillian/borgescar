@@ -8,8 +8,8 @@ import { useContext, useState } from "react";
 export default function UserForm() {
   const { user } = useContext(AuthContext);
 
-  const [userName, setUserName] = useState(user!.name);
-  const [userEmail, setUserEmail] = useState(user!.email);
+  const [userName, setUserName] = useState(user?.name);
+  const [userEmail, setUserEmail] = useState(user?.email);
 
   const router = useRouter();
 
@@ -28,7 +28,7 @@ export default function UserForm() {
 
     if (!userName && !userEmail) return alert("Nenhuma modificação feita");
 
-    if (userName === user?.name || userEmail === user?.email)
+    if (userName === user?.name && userEmail === user?.email)
       return alert("Nenhuma modificação feita");
 
     const response = await fetch("http://localhost:8000/users/update", {
@@ -42,9 +42,8 @@ export default function UserForm() {
         "Content-Type": "application/json",
       },
     });
-    const data = await response.json();
 
-    return console.log(data);
+    handleButtonLogOutClick();
   }
 
   return (
@@ -58,13 +57,13 @@ export default function UserForm() {
             >
               Nome de Usuário
             </label>
-            {userName && <input
+            <input
               type="text"
               id="user-name"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-            />}
+            />
           </div>
           <div className="w-full flex flex-col">
             <label
@@ -73,14 +72,18 @@ export default function UserForm() {
             >
               Email
             </label>
-            {userEmail && <input
+            <input
               type="email"
               id="email"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
-            />}
+            />
           </div>
+          <small>
+            * Você será redirecionado para a página de login após salvar as
+            Alterações
+          </small>
         </div>
       </div>
       <div className="flex gap-10 w-full justify-center">

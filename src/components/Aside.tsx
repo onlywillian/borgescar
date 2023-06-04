@@ -31,14 +31,7 @@ export default function Aside({ children }: AsideProps) {
               <h2 className="font-bold text-sm">Carros</h2>
             </Link>
             <Link href={"/adm/carros"}>
-              <h2 className="font-bold text-sm">
-                Administradores
-              </h2>
-            </Link>
-            <Link href={"/adm/carros"}>
-              <h2 className="font-bold text-sm">
-                Agendamentos
-              </h2>
+              <h2 className="font-bold text-sm">Agendamentos</h2>
             </Link>
           </div>
         </aside>
