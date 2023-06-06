@@ -11,14 +11,12 @@ import { redirect } from "next/navigation";
 import Aside from "@/components/Aside";
 
 export default async function Loja() {
-  // Checking if user is authenticated
   const token = cookies().get("nextAuth.token");
 
   if (!token) {
     redirect("/conta/login");
   }
 
-  // Obtaining all cars data
   const carsResponse = await fetch("http://localhost:8000/cars/all", {
     cache: "no-store",
   });

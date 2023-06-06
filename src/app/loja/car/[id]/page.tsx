@@ -90,7 +90,7 @@ export default function Car({ params }: Props) {
               />
             )}
           </div>
-          <AssistanceForm />
+          <AssistanceForm carName={carInformationData.name}/>
         </div>
 
         <div className="px-8 flex flex-col mb-20">

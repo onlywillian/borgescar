@@ -5,7 +5,11 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 
-export default function AssistanceForm() {
+interface Props {
+  carName: string
+}
+
+export default function AssistanceForm({ carName }: Props) {
   const [userName, setUserName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -13,18 +17,23 @@ export default function AssistanceForm() {
   async function handleServiceButtonClick() {
     if (!userName || !date || !time) return alert("Preencha todos os campos");
 
+    if (new Date(date) < new Date()) return alert("Selecione um data válida");
+
     const response = await fetch("http://localhost:8000/schedules/new", {
       method: "POST",
       body: JSON.stringify({
-        userName: userName,
-        date: date,
+        date: new Date(date),
         time: time,
+        userName: userName,
+        carName: carName
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
     const data = await response.json();
+
+    if (data.Error) return alert(data.Error);
 
     alert("Agendamento Concluído com sucesso!");
   }
