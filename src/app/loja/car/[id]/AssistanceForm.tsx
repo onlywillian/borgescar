@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import Button from "../../../../components/Button";
-import Input from "../../../../components/Input";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 
 export default function AssistanceForm() {
   const [userName, setUserName] = useState("");
@@ -30,7 +30,7 @@ export default function AssistanceForm() {
   }
 
   return (
-    <div className="h-full bg-aside-bg w-1/4 self-center flex flex-col p-8 gap-10 justify-center">
+    <div className="h-full bg-aside-bg w-1/4 self-center flex flex-col p-8 gap-2 justify-center">
       <h1 className="font-bold text-2xl self-center">Agendamento</h1>
       <Input
         id="name"
@@ -40,18 +40,18 @@ export default function AssistanceForm() {
       />
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col">
-          <label htmlFor="date" className="font-extrabold text-sm">
-            Dia do atendimento  
-          </label>
-          <select
-            id="date"
-            className="bg-purple-input border-none outline-0 p-2 rounded text-lg mb-5 text-white"
-            onChange={(e) => setDate(e.target.value)}
+          <label
+            htmlFor="date"
+            className="font-extrabold ml-4 text-sm overflow-hidden"
           >
-            <option value="">Selecione aqui</option>
-            <option value="23">23 de maio</option>
-            <option value="23">24 de maio</option>
-          </select>
+            Dia de Atendimento
+          </label>
+          <input
+            type="date"
+            id="date"
+            className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+            onChange={(e) => setDate(e.target.value)}
+          />
         </div>
         <div className="flex flex-col">
           <label htmlFor="time" className="font-extrabold text-sm">
