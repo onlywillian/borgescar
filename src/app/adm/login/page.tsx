@@ -27,7 +27,7 @@ export default function NewAdm() {
           <Input
             id="password"
             label="Senha"
-            type="text"
+            type="password"
             handleInput={setpassword}
           />
 

@@ -106,11 +106,11 @@ export default function NewCar({ params }: Props) {
             />
             <>
               <label htmlFor="espec" className="font-bold ml-4">
-                Especificações
+                Descrição
               </label>
               <textarea
                 id="description"
-                className="h-1/5 resize-none border-none bg-purple-input rounded-xl text-white p-2 outline-0"
+                className="h-1/5 w-full resize-none border-none bg-purple-input rounded-xl text-white p-2 outline-0"
                 placeholder="Descrição completa do veículo"
                 onChange={(e) => handleInputChange(e)}
                 defaultValue={carData.description}

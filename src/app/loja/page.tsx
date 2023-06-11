@@ -9,6 +9,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import Aside from "@/components/Aside";
+import banner from "@/../public/assets/banner.png";
 
 export default async function Loja() {
   const token = cookies().get("nextAuth.token");
@@ -42,11 +43,9 @@ export default async function Loja() {
           </div>
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
-          <div className=" w-10/12 h-2/5 mb-10 text-center self-center shadow-xl cursor-pointer hover:scale-105 transition-all">
+          <div className="w-10/12 h-2/5 mb-10 text-center self-center shadow-xl cursor-pointer hover:scale-105 transition-all">
             <Image
-              src={
-                "https://bocamafrapremium.com.br/wp-content/uploads/2023/01/Ref1_Boca_Mafra_Premium_-Banner_Site_Janeiro_Mercedes2.jpg"
-              }
+              src={banner}
               alt="Imagem de promoção"
               width={10000}
               height={10000}
@@ -70,7 +69,9 @@ export default async function Loja() {
                   />
                   <div className="h-1/5 m-2">
                     <p className="font-bold">Modelo: {value.name}</p>
-                    <p className="font-bold">Preço: R${value.price}</p>
+                    <p className="font-bold">
+                      Preço: R$ {value.price.toLocaleString("pt-BR")}
+                    </p>
                   </div>
                 </Link>
               ))}

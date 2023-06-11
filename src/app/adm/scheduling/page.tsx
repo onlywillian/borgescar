@@ -1,10 +1,14 @@
-import TableCeil from "../clientes/tableCeil";
-
 export default async function Scheduling() {
   const response = await fetch("http://localhost:8000/schedules/all", {
     cache: "no-store",
   });
   const schedulesData = await response.json();
+
+  function formatDate(dateString: Date) {
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("pt-BR");
+  }
 
   return (
     <div className="w-full h-screen flex flex-col p-8">
@@ -29,7 +33,7 @@ export default async function Scheduling() {
           >
             <span className="flex-1 text-center">{schedule.userName}</span>
             <span className="flex-1 border-l-2 border-black text-center">
-              {schedule.date}
+              {formatDate(schedule.date)}
             </span>
             <span className="flex-1 border-l-2 border-black text-center">
               {schedule.time}
@@ -37,12 +41,6 @@ export default async function Scheduling() {
             <span className="flex-1 border-l-2 border-black text-center">
               {schedule.id}
             </span>
-            {/* <Link
-              href={`/adm/editar-carro/${iten.id}`}
-              className="w-1/5 border-l-2 border-black flex justify-center items-center"
-            >
-              <IoSettingsSharp className="text-2xl" />
-            </Link> */}
           </div>
         ))}
       </div>

@@ -90,7 +90,7 @@ export default function Car({ params }: Props) {
               />
             )}
           </div>
-          <AssistanceForm carName={carInformationData.name}/>
+          <AssistanceForm carName={carInformationData.name} />
         </div>
 
         <div className="px-8 flex flex-col mb-20">
@@ -100,11 +100,24 @@ export default function Car({ params }: Props) {
               <div className="w-5/6 bg-black h-0.5 ml-8"></div>
             </div>
 
-            <p>Nome do Veículo: {carInformationData?.name}</p>
-            <p>Tipo: {carInformationData?.type}</p>
-            <p>Preço: R$ {carInformationData?.price}</p>
-            <p>Disponível em Estoque: {carInformationData?.stock}</p>
-            <p>Descrição Detalhada: {carInformationData?.description}</p>
+            <p>
+              <strong>Nome do Veículo:</strong> {carInformationData?.name}
+            </p>
+            <p>
+              <strong>Tipo:</strong> {carInformationData?.type}
+            </p>
+            <p>
+              <strong>Preço:</strong> R${" "}
+              {carInformationData?.price?.toLocaleString("pt-BR")}
+            </p>
+            <p>
+              <strong>Disponível em Estoque:</strong>{" "}
+              {carInformationData?.stock}
+            </p>
+            <p>
+              <strong>Descrição Detalhada:</strong>{" "}
+              {carInformationData?.description}
+            </p>
           </div>
         </div>
         <Footer />
