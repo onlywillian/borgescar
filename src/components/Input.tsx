@@ -1,7 +1,5 @@
 "use client";
 
-import { ChangeEvent } from "react";
-
 interface InputProps {
   type: string;
   label: string;
@@ -56,7 +54,7 @@ export default function Input({
             id={id}
             onInput={(e) => handleInput?.(e.currentTarget.value)}
             onChange={(e) => handleChange?.(e)}
-            className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+            className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white placeholder-gray-300"
             placeholder={placeholder}
             defaultValue={defaultValue}
           />

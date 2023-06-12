@@ -2,7 +2,14 @@
 
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { FormEvent, use, useContext, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  use,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/contexts/authContext";
 
@@ -37,7 +44,7 @@ export default function NewCar({ params }: Props) {
     getCarData();
   }, []);
 
-  const handleInputChange = (e: eventType) => {
+  const handleInputChange = (e: eventType | ChangeEvent<HTMLSelectElement>) => {
     const { id, value } = e.target;
 
     // Inserindo com base no id
@@ -116,14 +123,24 @@ export default function NewCar({ params }: Props) {
                 defaultValue={carData.description}
               ></textarea>
             </>
-            <Input
+            <label htmlFor="type" className="font-bold ml-4">
+              Tipo do veículo
+            </label>
+            <select
               id="type"
-              label="Tipo do Veiculo"
-              type="text"
-              placeholder="Ex: Esportivo"
-              handleChange={handleInputChange}
-              defaultValue={carData.type}
-            />
+              className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+              onChange={(e) => handleInputChange(e)}
+            >
+              <option value="">Selecione aqui</option>
+              <option value="Carro esportivo">Carro esportivo</option>
+              <option value="Crossover">Crossover</option>
+              <option value="Minivan">Minivan</option>
+              <option value="Picape">Picape</option>
+              <option value="Carro conversível">Carro conversível</option>
+              <option value="Carro compacto">Carro compacto</option>
+              <option value="Carro de corrida">Carro de corrida</option>
+              <option value="Carro de rally">Carro de rally</option>
+            </select>
             <Input
               id="price"
               label="Preço (Em Reais)"

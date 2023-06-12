@@ -2,7 +2,7 @@
 
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { AuthContext } from "@/contexts/authContext";
 import { redirect } from "next/navigation";
 
@@ -27,7 +27,7 @@ export default function NewCar() {
   const [file2, setFile2] = useState<File | null>(null);
   const [file3, setFile3] = useState<File | null>(null);
 
-  const handleInputChange = (e: eventType) => {
+  const handleInputChange = (e: eventType | ChangeEvent<HTMLSelectElement>) => {
     const { id, value } = e.target;
 
     // Inserindo com base no id
@@ -95,18 +95,29 @@ export default function NewCar() {
               </label>
               <textarea
                 id="description"
-                className="h-1/5 resize-none border-none bg-purple-input rounded-xl text-white p-2 outline-0"
+                className="h-1/5 resize-none border-none mb-5 bg-purple-input rounded-xl text-white p-2 outline-0 placeholder-gray-300"
                 placeholder="Descrição completa do veículo"
                 onChange={(e) => handleInputChange(e)}
               ></textarea>
             </>
-            <Input
+            <label htmlFor="type" className="font-bold ml-4">
+              Tipo do veículo
+            </label>
+            <select
               id="type"
-              label="Tipo do Veiculo"
-              type="text"
-              placeholder="Ex: Esportivo"
-              handleChange={handleInputChange}
-            />
+              className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+              onChange={(e) => handleInputChange(e)}
+            >
+              <option value="">Selecione aqui</option>
+              <option value="Carro esportivo">Carro esportivo</option>
+              <option value="Crossover">Crossover</option>
+              <option value="Minivan">Minivan</option>
+              <option value="Picape">Picape</option>
+              <option value="Carro conversível">Carro conversível</option>
+              <option value="Carro compacto">Carro compacto</option>
+              <option value="Carro de corrida">Carro de corrida</option>
+              <option value="Carro de rally">Carro de rally</option>
+            </select>
             <Input
               id="price"
               label="Preço (Em Reais)"
