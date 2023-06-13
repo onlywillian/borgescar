@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 
 import aston1 from "@/../public/assets/cars/aston_1.jpg";

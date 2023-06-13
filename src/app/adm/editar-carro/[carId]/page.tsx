@@ -29,7 +29,7 @@ export default function NewCar({ params }: Props) {
 
   const { isAdmAuthenticated } = useContext(AuthContext);
 
-  if (!isAdmAuthenticated) router.push("/adm/login");
+  // if (!isAdmAuthenticated) router.push("/adm/login");
 
   useEffect(() => {
     async function getCarData() {
