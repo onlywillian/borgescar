@@ -67,7 +67,7 @@ export default async function Loja() {
                   <div className="h-1/5 m-2">
                     <p className="font-bold">{value.name}</p>
                     <p className="font-bold">
-                      R$ {value.price.toLocaleString("pt-BR")}
+                      R$ {value.price.toLocaleString("pt-BR") + ",00"}
                     </p>
                   </div>
                 </Link>

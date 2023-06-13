@@ -21,7 +21,6 @@ export default function Car({ params }: Props) {
   const [carInformationData, setCarInformationData]: any = useState(false);
   const [indexImage, setIndexImage]: any = useState(0);
 
-  // Checking if user is authenticated
   const token = document.cookie
     .split("; ")
     .find((row) => row.startsWith("nextAuth.token="))

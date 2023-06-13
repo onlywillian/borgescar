@@ -5,13 +5,13 @@ import Button from "@/components/Button";
 import {
   ChangeEvent,
   FormEvent,
-  use,
   useContext,
   useEffect,
   useState,
 } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/contexts/authContext";
+import Link from "next/link";
 
 type eventType =
   | React.ChangeEvent<HTMLInputElement>
@@ -24,7 +24,6 @@ interface Props {
 }
 
 export default function NewCar({ params }: Props) {
-  const [oldCarData, setOldCarData] = useState<any>({});
   const [carData, setCarData] = useState<any>({});
   const router = useRouter();
 
@@ -61,9 +60,6 @@ export default function NewCar({ params }: Props) {
         "Content-Type": "application/json",
       },
     });
-    const data = await response.json();
-
-    console.log(data);
 
     return router.push("adm/carros");
   }
@@ -131,7 +127,7 @@ export default function NewCar({ params }: Props) {
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
               onChange={(e) => handleInputChange(e)}
             >
-              <option value="">Selecione aqui</option>
+              <option value={carData.type}>{carData.type}</option>
               <option value="Carro esportivo">Carro esportivo</option>
               <option value="Crossover">Crossover</option>
               <option value="Minivan">Minivan</option>
@@ -157,6 +153,9 @@ export default function NewCar({ params }: Props) {
               handleChange={handleInputChange}
               defaultValue={carData.stock}
             />
+            <Link href={`/adm/editar-carro/atualizar-imagens/${carData.id}`} className="flex justify-center">
+              <Button>Atualizar Imagens</Button>
+            </Link>
           </div>
         </div>
         <div className="flex gap-10 w-full justify-center">
