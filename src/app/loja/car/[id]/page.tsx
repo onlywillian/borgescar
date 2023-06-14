@@ -19,7 +19,7 @@ interface Props {
 
 export default function Car({ params }: Props) {
   const [carInformationData, setCarInformationData]: any = useState(false);
-  const [indexImage, setIndexImage]: any = useState(0);
+  const [indexImage, setIndexImage]: any = useState(1);
 
   const token = document.cookie
     .split("; ")
@@ -50,11 +50,11 @@ export default function Car({ params }: Props) {
 
   function handleButtonCarouselClick(forward: boolean) {
     if (forward) {
-      if (indexImage >= 2) return;
+      if (indexImage >= 3) return;
 
       return setIndexImage((state: any) => state + 1);
     } else {
-      if (indexImage <= 0) return;
+      if (indexImage <= 1) return;
 
       return setIndexImage((state: any) => state - 1);
     }

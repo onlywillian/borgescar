@@ -32,16 +32,16 @@ export default function Logos() {
         },
     ])
 
-    function handleLogoClick(logoAlt: string) {
-        const newLogos = logos.map(logo => {
-            return logo.alt === logoAlt && logo.grayscale === true ?
-                { ...logo, style: 'w-20 h-20 grayscale-0 border-4 p-2 cursor-pointer border-black rounded-full', grayscale: false }
-                :
-                { ...logo, style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full', grayscale: true }
-        })
+    // function handleLogoClick(logoAlt: string) {
+    //     const newLogos = logos.map(logo => {
+    //         return logo.alt === logoAlt && logo.grayscale === true ?
+    //             { ...logo, style: 'w-20 h-20 grayscale-0 border-4 p-2 cursor-pointer border-black rounded-full', grayscale: false }
+    //             :
+    //             { ...logo, style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full', grayscale: true }
+    //     })
 
-        setLogos(newLogos)
-    }
+    //     setLogos(newLogos)
+    // }
 
     return (
         <>
@@ -49,8 +49,7 @@ export default function Logos() {
                 <Image
                     src={logo.src}
                     alt={logo.alt}
-                    className={logo.style}
-                    onClick={() => handleLogoClick(logo.alt)}
+                    className="w-20 h-20 grayscale-0 border-4 p-2 cursor-pointer border-black rounded-full"
                     key={logo.id}
                 />
             ))}

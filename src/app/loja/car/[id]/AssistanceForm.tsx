@@ -11,18 +11,18 @@ interface Props {
 
 export default function AssistanceForm({ carName }: Props) {
   const [userName, setUserName] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState<Date | null>();
   const [time, setTime] = useState("");
 
   async function handleServiceButtonClick() {
     if (!userName || !date || !time) return alert("Preencha todos os campos");
 
-    if (new Date(date) < new Date()) return alert("Selecione um data válida");
+    if (date < new Date()) return alert("Selecione uma data válida");
 
     const response = await fetch("http://localhost:8000/schedules/new", {
       method: "POST",
       body: JSON.stringify({
-        date: new Date(date),
+        date: date,
         time: time,
         userName: userName,
         carName: carName
@@ -59,7 +59,7 @@ export default function AssistanceForm({ carName }: Props) {
             type="date"
             id="date"
             className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) => setDate(e.target.valueAsDate)}
           />
         </div>
         <div className="flex flex-col">

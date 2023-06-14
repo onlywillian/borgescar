@@ -26,6 +26,7 @@ export default function NewCar() {
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
   const [file3, setFile3] = useState<File | null>(null);
+  const [file4, setFile4] = useState<File | null>(null);
 
   const handleInputChange = (e: eventType | ChangeEvent<HTMLSelectElement>) => {
     const { id, value } = e.target;
@@ -46,7 +47,7 @@ export default function NewCar() {
     )
       return alert("Preencha todos os campos!");
 
-    if (!file1 || !file2 || !file3) return alert("Insira todas as imagens!");
+    if (!file1 || !file2 || !file3 || !file4) return alert("Insira todas as imagens!");
 
     const formData = new FormData();
 
@@ -54,6 +55,7 @@ export default function NewCar() {
     formData.append("image1", file1 as File);
     formData.append("image2", file2 as File);
     formData.append("image3", file3 as File);
+    formData.append("image4", file4 as File);
 
     // Inserindo os dados do formulário
     formData.append("name", carData.name);
@@ -136,7 +138,7 @@ export default function NewCar() {
           <div className="flex flex-col justify-center w-1/3">
             <h1 className="text-3xl font-extrabold mb-8">Imagens do Carro</h1>
             {/* Upload de imagens */}
-            <label>Imagem 1</label>
+            <label>Imagem da loja (amostra)</label>
             <input
               type="file"
               name="image1"
@@ -144,20 +146,28 @@ export default function NewCar() {
               onChange={(e) => setFile1(e.target.files![0])}
               accept="image/*"
             />
-            <label>Imagem 2</label>
+            <label>Imagem da galeria 1</label>
             <input
               type="file"
-              name="image1"
+              name="image2"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
               onChange={(e) => setFile2(e.target.files![0])}
               accept="image/*"
             />
-            <label>Imagem 3</label>
+            <label>Imagem da galeria 2</label>
             <input
               type="file"
-              name="image1"
+              name="image3"
               className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
               onChange={(e) => setFile3(e.target.files![0])}
+              accept="image/*"
+            />
+            <label>Imagem da galeria 3</label>
+            <input
+              type="file"
+              name="image4"
+              className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+              onChange={(e) => setFile4(e.target.files![0])}
               accept="image/*"
             />
           </div>
