@@ -83,6 +83,7 @@ export default function Car({ params }: Props) {
               <Image
                 src={carInformationData?.image_links[indexImage]}
                 alt="Carro Legal"
+                loading="lazy"
                 width={1000}
                 height={0}
                 className="w-full h-full bg-white"

@@ -17,12 +17,14 @@ export default function AssistanceForm({ carName }: Props) {
   async function handleServiceButtonClick() {
     if (!userName || !date || !time) return alert("Preencha todos os campos");
 
-    if (date < new Date()) return alert("Selecione uma data válida");
+    const tratedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+
+    if (tratedDate < new Date()) return alert("Selecione uma data válida");
 
     const response = await fetch("http://localhost:8000/schedules/new", {
       method: "POST",
       body: JSON.stringify({
-        date: date,
+        date: tratedDate,
         time: time,
         userName: userName,
         carName: carName

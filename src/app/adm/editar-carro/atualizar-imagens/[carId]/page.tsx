@@ -1,13 +1,13 @@
 "use client"
 
 import Button from "@/components/Button";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function UpdateImages() {
     const router = useRouter();
 
-    function returnToPreviouslyPage() {
-        router.push("/adm/login")
+    function returnToPreviouslyPage(e: MouseEvent) {
+        router.back();
     }
 
     return (
