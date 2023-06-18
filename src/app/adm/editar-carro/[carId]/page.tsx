@@ -2,13 +2,7 @@
 
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import {
-  ChangeEvent,
-  FormEvent,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/contexts/authContext";
 import Link from "next/link";
@@ -153,7 +147,10 @@ export default function NewCar({ params }: Props) {
               handleChange={handleInputChange}
               defaultValue={carData.stock}
             />
-            <Link href={`/adm/editar-carro/atualizar-imagens/${carData.id}`} className="flex justify-center">
+            <Link
+              href={`/adm/editar-carro/atualizar-imagens/${carData.id}`}
+              className="flex justify-center"
+            >
               <Button>Atualizar Imagens</Button>
             </Link>
           </div>

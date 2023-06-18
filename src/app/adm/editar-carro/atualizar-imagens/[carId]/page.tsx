@@ -2,14 +2,35 @@
 
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
-export default function UpdateImages() {
+interface Props {
+  params: {
+    carId: string;
+  };
+}
+
+export default function UpdateImages({ params }: Props) {
+  const [carInformation, setCarInformation] = useState<any>([]);
+
   const router = useRouter();
 
   function returnToPreviouslyPage(e: MouseEvent) {
     router.back();
   }
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        `http://localhost:8000/cars/${params.carId}`
+      );
+      const data = await response.json();
+
+      console.log(data);
+      setCarInformation(data.Car);
+    }
+    getData();
+  }, []);
 
   const [file1, setFile1] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
@@ -29,6 +50,8 @@ export default function UpdateImages() {
     formData.append("image2", file2 as File);
     formData.append("image3", file3 as File);
     formData.append("image4", file4 as File);
+
+    formData.append("carName", carInformation.name);
 
     // Mandando a requisição
     const response = await fetch("http://localhost:8000/cars/updateImages", {
@@ -85,7 +108,11 @@ export default function UpdateImages() {
             />
           </div>
           <div className="flex gap-10">
-            <Button handleButtonClick={returnToPreviouslyPage}>Voltar</Button>
+            <Button
+              handleButtonClick={(e: MouseEvent) => returnToPreviouslyPage(e)}
+            >
+              Voltar
+            </Button>
             <Button>Salvar Imagens</Button>
           </div>
         </div>
