@@ -47,7 +47,8 @@ export default function NewCar() {
     )
       return alert("Preencha todos os campos!");
 
-    if (!file1 || !file2 || !file3 || !file4) return alert("Insira todas as imagens!");
+    if (!file1 || !file2 || !file3 || !file4)
+      return alert("Insira todas as imagens!");
 
     const formData = new FormData();
 
@@ -71,7 +72,7 @@ export default function NewCar() {
     });
     const data = await response.json();
 
-    if (data.Error) return alert("Erro: " + data.Error);
+    if (data.Error) return alert(data.Error);
 
     return alert("Carro criado com sucesso!");
   }
