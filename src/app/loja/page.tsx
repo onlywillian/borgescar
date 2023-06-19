@@ -40,7 +40,7 @@ export default async function Loja() {
           </div>
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
-          <div className="w-10/12 h-4/6 mb-10 text-center self-center shadow-xl cursor-pointer hover:scale-105 transition-all">
+          <Link href="/loja/car/648fa0a81bb8a0b6bb6d12e0" className="w-10/12 h-4/6 mb-10 text-center self-center shadow-xl cursor-pointer hover:scale-105 transition-all">
             <Image
               src={banner}
               alt="Imagem de promoção"
@@ -48,7 +48,7 @@ export default async function Loja() {
               height={10000}
               className="w-full h-full"
             />
-          </div>
+          </Link>
           <div className="w-full grid grid-cols-2 justify-items-center gap-y-10">
             {carsData.Cars &&
               carsData.Cars.map((value: any) => (
@@ -62,7 +62,7 @@ export default async function Loja() {
                     alt={"Imagem do carro"}
                     width={1000}
                     height={0}
-                    className="h-4/5 w-full"
+                    className="h-4/5 w-full scale-x-75 scale-y-[60%]"
                   />
                   <div className="h-1/5 m-2">
                     <p className="font-bold">{value.name}</p>

@@ -17,6 +17,12 @@ export default function Home() {
         <div className="w-full overflow-auto">
           <Carousel />
         </div>
+        <div className="w-full my-10 flex justify-center gap-10">
+          <Logos />
+        </div>
+        <div className="w-full overflow-auto">
+          <Carousel />
+        </div>
         <Footer />
       </main>
     </>
