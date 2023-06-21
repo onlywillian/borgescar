@@ -20,7 +20,7 @@ export default function Home() {
           ]}/>
         </div>
         <div className="w-full my-10 flex justify-center gap-10">
-          <Logos />
+          <Logos type={1}/>
         </div>
         <div className="w-full overflow-auto">
         <Carousel images={[
@@ -30,7 +30,7 @@ export default function Home() {
           ]}/>
         </div>
         <div className="w-full my-10 flex justify-center gap-10">
-          <Logos />
+          <Logos type={2}/>
         </div>
         <div className="w-full overflow-auto">
         <Carousel images={[

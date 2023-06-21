@@ -77,7 +77,6 @@ export default function AuthProvider({ children }: any) {
   }, []);
 
   async function administratorSignIn({ email, password }: SignInData) {
-    // calling back-end login api
     try {
       const response = await fetch("http://localhost:8000/adm/auth/login", {
         method: "POST",
