@@ -6,8 +6,17 @@ import { useState } from 'react'
 import bmw from '../../public/assets/logos/bmw.svg'
 import buggati from '../../public/assets/logos/bugatti-2.svg'
 import ferrari from '../../public/assets/logos/ferrari-4.svg'
+import fiat from '../../public/assets/logos/fiat-3.svg'
+import mclaren from '../../public/assets/logos/mclaren.svg'
+import mercedesBenz from '../../public/assets/logos/mercedes-benz.svg'
+import toyota from '../../public/assets/logos/toyota.svg'
+import volkswagen from '../../public/assets/logos/volkswagen.svg'
 
-export default function Logos() {
+interface Props {
+    type: boolean
+}
+
+export default function Logos({ type }: Props) {
     const [logos, setLogos] = useState([
         {
             id: 1,
@@ -30,6 +39,41 @@ export default function Logos() {
             style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full',
             grayscale: true,
         },
+        {
+            id: 4,
+            src: fiat,
+            alt: 'ferrari',
+            style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full',
+            grayscale: true,
+        },
+        {
+            id: 5,
+            src: mclaren,
+            alt: 'fiat',
+            style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full',
+            grayscale: true,
+        },
+        {
+            id: 6,
+            src: mercedesBenz,
+            alt: 'fiat',
+            style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full',
+            grayscale: true,
+        },
+        {
+            id: 7,
+            src: toyota,
+            alt: 'fiat',
+            style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full',
+            grayscale: true,
+        },
+        {
+            id: 8,
+            src: volkswagen,
+            alt: 'fiat',
+            style: 'w-20 h-20 grayscale border-4 p-2 cursor-pointer border-black rounded-full',
+            grayscale: true,
+        },
     ])
 
     // function handleLogoClick(logoAlt: string) {
@@ -45,14 +89,30 @@ export default function Logos() {
 
     return (
         <>
-            {logos.map(logo => (
-                <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="w-20 h-20 grayscale-0 border-4 p-2 cursor-pointer border-black rounded-full"
-                    key={logo.id}
-                />
-            ))}
+            { type ? logos.map((logo, index) => {
+                if (index < 4) {
+                    return (
+                        <Image
+                            src={logo.src}
+                            alt={logo.alt}
+                            className="w-20 h-20 grayscale-0 border-4 p-2 cursor-pointer border-black rounded-full"
+                            key={logo.id}
+                        />
+                    )
+                }
+            }) :
+            logos.map((logo, index) => {
+                if (index > 4) {
+                    return (
+                        <Image
+                            src={logo.src}
+                            alt={logo.alt}
+                            className="w-20 h-20 grayscale-0 border-4 p-2 cursor-pointer border-black rounded-full"
+                            key={logo.id}
+                        />
+                    )
+                }
+            }
         </>
     )
 }

@@ -2,25 +2,16 @@
 
 import { useState } from "react";
 
-import aston1 from "@/../public/assets/cars/aston_1.jpg";
-import aston2 from "@/../public/assets/cars/aston_2.jpg";
-import aston3 from "@/../public/assets/cars/aston_3.jpg";
-
 import Image from "next/image";
 
-export default function Carousel() {
+interface Props {
+  images: Array<{
+    link: string
+  }>
+}
+
+export default function Carousel({ images }: Props) {
   const [indexImage, setIndexImage] = useState(1);
-  const images = [
-    {
-      link: aston1,
-    },
-    {
-      link: aston2,
-    },
-    {
-      link: aston3,
-    },
-  ];
 
   function handleImagesClick(forward: boolean) {
     if (forward) {
