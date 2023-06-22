@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
     appDir: true,
   },
@@ -13,6 +13,7 @@ const nextConfig = {
         pathname: "**",
       },
     ],
+    domains: ["drive.google.com"],
   },
 };
 

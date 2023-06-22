@@ -47,6 +47,10 @@ export default function NewCar({ params }: Props) {
   async function handleDeleteButtonClick(e: MouseEvent) {
     e.preventDefault();
 
+    const confirmation = confirm("Deseja realmente deletar o carro?");
+
+    if (!confirmation) return
+
     const response = await fetch("http://localhost:8000/cars/remove", {
       method: "delete",
       body: JSON.stringify({ id: params.carId }),

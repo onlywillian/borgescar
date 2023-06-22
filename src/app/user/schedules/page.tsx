@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { IoHomeSharp, IoNewspaperSharp } from "react-icons/io5";
+import { IoHomeSharp, IoNewspaperSharp, IoTrash } from "react-icons/io5";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/contexts/authContext";
 import Aside from "@/components/Aside";
@@ -24,6 +24,27 @@ export default function Schedules() {
     const date = new Date(dateString);
 
     return date.toLocaleDateString("pt-BR");
+  }
+
+  async function handleTrashIconClick(scheduleId: string, scheduleDate: string) {
+    const confirmation = confirm("Deseja mesmo cancelar a consulta?")
+
+    if (!confirmation) return
+
+    const response = await fetch("http://localhost:8000/schedules/remove", {
+      method: "DELETE",
+      body: JSON.stringify({
+        id: scheduleId,
+        userName: user?.name,
+        date: scheduleDate,
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const data = await response.json();
+
+    alert(data.Success);
   }
 
   return (
@@ -54,7 +75,7 @@ export default function Schedules() {
               Horário
             </span>
             <span className="flex-1 border-l-2 border-black text-center">
-              ID
+              Cancelar
             </span>
           </div>
           {schedules.map((schedule: any) => {
@@ -71,8 +92,8 @@ export default function Schedules() {
                   <span className="flex-1 border-l-2 border-black text-center">
                     {schedule.time}
                   </span>
-                  <span className="flex-1 border-l-2 border-black text-center">
-                    {schedule.id}
+                  <span className="flex-1 border-l-2 border-black flex justify-center items-center text-2xl cursor-pointer">
+                    <IoTrash onClick={() => handleTrashIconClick(schedule.id, schedule.date)}/>
                   </span>
                 </div>
               );

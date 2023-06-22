@@ -3,14 +3,16 @@
 import { useState } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   images: Array<{
     link: string
-  }>
+  }>,
+  href: string
 }
 
-export default function Carousel({ images }: Props) {
+export default function Carousel({ images, href }: Props) {
   const [indexImage, setIndexImage] = useState(1);
 
   function handleImagesClick(forward: boolean) {
@@ -40,7 +42,7 @@ export default function Carousel({ images }: Props) {
           priority
         />
       </div>
-      <div className="w-2/3 h-5/6 self-start">
+      <Link className="w-2/3 h-5/6 self-start" href={href}>
         <Image
           src={images[indexImage].link}
           alt="Carro"
@@ -49,7 +51,7 @@ export default function Carousel({ images }: Props) {
           className="w-full h-full"
           priority
         />
-      </div>
+      </Link>
       <div
         className="w-2/3 h-5/6 absolute -right-1/2 opacity-60 cursor-pointer hover:opacity-100 transition self-end p-4"
         onClick={() => handleImagesClick(true)}

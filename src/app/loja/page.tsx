@@ -11,6 +11,7 @@ import { redirect } from "next/navigation";
 import Aside from "@/components/Aside";
 import banner from "@/../public/assets/banner.png";
 import Input from "@/components/Input";
+import { IoHomeSharp } from "react-icons/io5";
 
 export default async function Loja() {
   const token = cookies().get("nextAuth.token");
@@ -24,20 +25,16 @@ export default async function Loja() {
   });
   const carsData = await carsResponse.json();
 
-  function filterCars(carsList: Array<Object>) {}
 
   return (
     <>
       <main className="bg-[#f5f9ff] flex">
         <Aside>
           <Link href={"/"} className="font-bold">
-            HOME
+            <p className="flex w-full gap-2 items-center text-lg hover:border-b-2 hover:border-black transition-all">
+              <IoHomeSharp /> HOME
+            </p>
           </Link>
-          <p className="font-bold">FILTROS</p>
-          <div className="ml-4 flex flex-col gap-y-2">
-            <p>MODELO:</p>
-            <Input id="" label="" type="text" placeholder="Ex: Aston Martin" />
-          </div>
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
           <Link

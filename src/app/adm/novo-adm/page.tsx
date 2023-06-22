@@ -60,13 +60,13 @@ export default function NewAdm() {
           <Input
             id="password"
             label="Senha"
-            type="text"
+            type="password"
             handleInput={setpassword}
           />
           <Input
             id="confirm-password"
             label="Confirme sua Senha"
-            type="text"
+            type="password"
             handleInput={setConfirmPassword}
           />
 

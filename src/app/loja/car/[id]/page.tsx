@@ -98,9 +98,6 @@ export default function Car({ params }: Props) {
               <Image
                 src={carInformationData?.image_links[indexImage]}
                 alt="Carro Legal"
-                priority
-                placeholder="blur"
-                blurDataURL={rgbDataURL(184, 216, 234)}
                 width={1000}
                 height={0}
                 className="w-full h-full bg-white"
