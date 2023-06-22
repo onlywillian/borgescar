@@ -57,23 +57,27 @@ export default function Schedules() {
               ID
             </span>
           </div>
-          {schedules.map((schedule: any) => (
-            <div
-              key={schedule.id}
-              className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex"
-            >
-              <span className="flex-1 text-center">{schedule.carName}</span>
-              <span className="flex-1 border-l-2 border-black text-center">
-                {formatDate(schedule.date)}
-              </span>
-              <span className="flex-1 border-l-2 border-black text-center">
-                {schedule.time}
-              </span>
-              <span className="flex-1 border-l-2 border-black text-center">
-                {schedule.id}
-              </span>
-            </div>
-          ))}
+          {schedules.map((schedule: any) => {
+            if (schedule.userName == user?.name) {
+              return (
+                <div
+                  key={schedule.id}
+                  className="w-full p-4 even:bg-adm-blue odd:bg-aqua-v-light flex"
+                >
+                  <span className="flex-1 text-center">{schedule.carName}</span>
+                  <span className="flex-1 border-l-2 border-black text-center">
+                    {formatDate(schedule.date)}
+                  </span>
+                  <span className="flex-1 border-l-2 border-black text-center">
+                    {schedule.time}
+                  </span>
+                  <span className="flex-1 border-l-2 border-black text-center">
+                    {schedule.id}
+                  </span>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </div>
