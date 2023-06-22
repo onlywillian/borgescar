@@ -1,23 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "@/contexts/authContext";
 
 import Button from "@/components/Button";
-import Input from "@/components/Input";
 
 interface Props {
-  carName: string
+  carName: string;
 }
 
 export default function AssistanceForm({ carName }: Props) {
-  const [userName, setUserName] = useState("");
   const [date, setDate] = useState<Date | null>();
   const [time, setTime] = useState("");
 
-  async function handleServiceButtonClick() {
-    if (!userName || !date || !time) return alert("Preencha todos os campos");
+  const { user } = useContext(AuthContext);
 
-    const tratedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+  async function handleServiceButtonClick() {
+    if (!date || !time) return alert("Preencha todos os campos");
+
+    const tratedDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() + 1
+    );
 
     if (tratedDate < new Date()) return alert("Selecione uma data válida");
 
@@ -26,8 +31,8 @@ export default function AssistanceForm({ carName }: Props) {
       body: JSON.stringify({
         date: tratedDate,
         time: time,
-        userName: userName,
-        carName: carName
+        userName: user?.name,
+        carName: carName,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -43,11 +48,18 @@ export default function AssistanceForm({ carName }: Props) {
   return (
     <div className="h-full bg-aside-bg w-1/4 self-center flex flex-col p-8 gap-2 justify-center">
       <h1 className="font-bold text-2xl self-center">Agendamento</h1>
-      <Input
+      <label
+        htmlFor="name"
+        className="font-extrabold ml-4 text-sm overflow-hidden"
+      >
+        Nome Completo
+      </label>
+      <input
         id="name"
-        label="Nome Completo"
         type="text"
-        handleInput={setUserName}
+        className="bg-purple-input border-none outline-0 p-2 rounded-xl text-lg mb-5 text-white"
+        readOnly
+        value={user?.name}
       />
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col">

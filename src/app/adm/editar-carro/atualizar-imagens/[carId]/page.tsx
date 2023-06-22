@@ -26,7 +26,6 @@ export default function UpdateImages({ params }: Props) {
       );
       const data = await response.json();
 
-      console.log(data);
       setCarInformation(data.Car);
     }
     getData();

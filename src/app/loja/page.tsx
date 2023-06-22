@@ -41,7 +41,7 @@ export default async function Loja() {
         </Aside>
         <div className="h-screen px-10 w-full py-10 overflow-auto flex flex-col">
           <Link
-            href="/loja/car/648fa0a81bb8a0b6bb6d12e0"
+            href="/loja/car/6493a7b7e5578e6f3b22832c"
             className="w-10/12 h-4/6 mb-10 text-center self-center shadow-xl cursor-pointer hover:scale-105 transition-all"
           >
             <Image
