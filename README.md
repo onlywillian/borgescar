@@ -1,38 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dealership
+
+## About this project
+
+Borge's Car is a dealership that uses a website with intuitive and minimalist screens to sell cars quickly and conveniently through appointments with suitable professionals.
+
+## Why?
+
+This project was created to complete the technical IT course at the EEEP Adriano Nobre school, being done with the help of a team of 5 people where I was responsible for the complete programming of the website
+
+## Installers
+
+If you want to test the App in the Production mode, the installers are listed below:
+
+Link to web site: Soon!
+
+## Funcionalities
+
+- Authentication with login and registration using JWT token
+- Client and administrator authentication
+- CRUD of customers and cars
+- Password encryption using random hashes
+- File storage using Google Drive
 
 ## Getting Started
 
-First, run the development server:
+Install the Borge's Car by following the steps below
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  $ git clone https://github.com/onlywillian/dealership-frontend
+  
+  $ cd dealership-frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Installing dependencies
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+  $ npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Or
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  $ yarn
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Running
 
-## Learn More
+To connect to the server, follow the steps in the [other repository](https://github.com/onlywillian/dealership-backend)
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  $ npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- React - Build the native app using JavaScript and React
+- Next.js - Server-side rendering and static website generation for React-based web applications
+- Typescript - Extends JavaScript by adding types to the language
+- Babel - JavaScript compiler
+- ESlint - Linter
+- TailWindCSS - Styles
+- JWTdecode - Decode tokens
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[MIT](https://choosealicense.com/licenses/mit/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
