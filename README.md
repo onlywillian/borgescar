@@ -1,5 +1,13 @@
 # Dealership
 
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/fb31f8c2-f385-49b2-9300-34bf6cfa7f7a" width="500"/>
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/b8db60fe-6ffd-4cf9-97d1-d64f7914c1fc" width="500"/>
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/ea625f95-d2b6-4034-ad5b-66faa8d527bc" width="500"/>
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/089f818b-6c2f-4db0-bd51-7e2590845a95" width="500"/>
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/4c7d7e5f-f01f-4946-bdf5-d01d98c91216" width="500"/>
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/fca08e05-e605-488a-bae9-9d8ba27460fc" width="500"/>
+<img src="https://github.com/onlywillian/dealership-frontend/assets/82155000/c0af1b0d-39e4-48ef-be76-6807ba79bfc8" width="500"/>
+
 ## About this project
 
 Borge's Car is a dealership that uses a website with intuitive and minimalist screens to sell cars quickly and conveniently through appointments with suitable professionals.
@@ -21,6 +29,7 @@ Link to web site: Soon!
 - CRUD of customers and cars
 - Password encryption using random hashes
 - File storage using Google Drive
+- Logout system
 
 ## Getting Started
 
