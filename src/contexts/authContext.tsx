@@ -159,7 +159,7 @@ export default function AuthProvider({ children }: any) {
       }
 
       const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
-      document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
+      document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}; path="/"`;
 
       setUser(User);
 
@@ -184,8 +184,10 @@ export default function AuthProvider({ children }: any) {
     });
     const { User, token } = await response.json();
 
+    console.log(token);
+
     const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
-    document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}`;
+    document.cookie = `nextAuth.token=${token}; expires=${twoHoursFromNow.toUTCString()}; path="/"`;
 
     setUser(User);
 

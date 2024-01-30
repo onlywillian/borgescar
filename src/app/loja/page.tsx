@@ -25,7 +25,6 @@ export default async function Loja() {
   });
   const carsData = await carsResponse.json();
 
-
   return (
     <>
       <main className="bg-[#f5f9ff] flex">

@@ -9,7 +9,7 @@ import logoImage from "../../../public/logo-light.svg";
 export default function QuemSomos() {
   return (
     <>
-      <main className="bg-aqua-light flex justify-center items-center overflow-auto p-10">
+      <main className="bg-aqua-light flex justify-center items-center p-10">
         <div className="bg-aqua-v-light w-1/2 rounded-lg flex flex-col p-10">
           <Image
             src={logoImage}
