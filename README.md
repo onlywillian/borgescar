@@ -30,6 +30,7 @@ Link to web site: Soon!
 - Password encryption using random hashes
 - File storage using Google Drive
 - Logout system
+- Cloud data storage using MongoDB Atlas
 
 ## Getting Started
 
