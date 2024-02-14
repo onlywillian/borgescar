@@ -37,7 +37,7 @@ Link to web site: Soon!
 Install the Borge's Car by following the steps below
 
 ```bash
-  $ git clone https://github.com/onlywillian/dealership-frontend
+  $ git clone https://github.com/onlywillian/dealership
   
   $ cd dealership-frontend
 ```
